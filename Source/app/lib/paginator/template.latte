@@ -1,0 +1,53 @@
+{*
+ * @version    $Id: template.phtml 2 2009-07-13 20:58:52Z david@grudl.com $
+ * @param Paginator $paginator
+ * @param array     $steps
+ *}
+
+<span class="paginator1">
+  {if $paginator->itemCount > 0}
+     Záznamy {($paginator->getPage()-1) * $paginator->getItemsPerPage() + 1} -
+             {($paginator->getPage()-1) * $paginator->getItemsPerPage() + $paginator->getLength()} /
+             {$paginator->itemCount}
+  {else}
+     Záznamy 0 - 0 / 0
+  {/if}
+</span>
+
+<span class="paginator3">
+   (&nbsp; Počet na stránce
+   {foreach $countRecords as $sentence => $value}
+      {if $paginator->getItemsPerPage() == $value}
+         {$value}&nbsp;
+      {else}
+         <a href="{link this, 'page'=>1, 'perPage'=>$value}">{$value}</a>&nbsp;
+      {/if}
+   {/foreach}
+   )
+</span>
+  
+{if $paginator->pageCount > 1}
+   <span class="paginator2">
+      Stránky &nbsp;
+      {if $paginator->isFirst()}
+         <span class="button">« Předcházející&nbsp;</span>
+      {else}
+         <a href="{link this, 'page' => $paginator->page - 1}">« Předcházející&nbsp;</a>
+      {/if}
+      {foreach $steps as $step}
+         {if $step == $paginator->page}
+            <span class="current">{$step}</span>
+         {else}
+            <a href="{link this, 'page' => $step}">{$step}</a>
+         {/if}
+         {if $iterator->nextValue > $step + 1}
+            <span>…</span>
+         {/if}
+      {/foreach}
+      {if $paginator->isLast()}
+         <span class="button">&nbsp;Další »</span>
+      {else}
+         <a href="{link this, 'page' => $paginator->page + 1}">&nbsp;Další »</a>
+      {/if}
+   </span>
+{/if}

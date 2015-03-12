@@ -1,0 +1,59 @@
+#
+# Z-Sklad
+#
+# Konfigurace vývojového prostředí (XAMPP)
+#
+
+common:
+
+ php:
+  date.timezone: Europe/Prague
+  
+ nette:
+  application:
+   #debugger: TRUE # Pro PROD zakomentovat
+   #catchExceptions: FALSE # Pro PROD zakomentovat
+   errorPresenter: Base:Error
+  session:
+   autoStart: true
+   expiration: 14 days
+  forms:
+   messages:
+    PROTECTION: 'Your session has expired. Please return to the home page and try again.'
+    EQUAL: 'Hodnota pole %label musí být rovna %s.'
+    NOT_EQUAL: 'Hodnota pole %label nesmí být %s.'
+    FILLED: 'Pole %label musí být vyplněno.'
+    BLANK: 'Pole %label musí být prázdné.'
+    MIN_LENGTH: 'Minimální počet znaků v poli %label je %d.'
+    MAX_LENGTH: 'Maximální počet znaků v poli %label je %d.'
+    LENGTH: 'Počet znaků v poli %label musí být mezi %d a %d.'
+    EMAIL: 'Pole %label musí být platná e-mailová adresa.'
+    URL: 'Pole %label musí být platné URL.'
+    INTEGER: 'Pole %label musí být celé číslo.'
+    FLOAT: 'Pole %label musí být číslo.'
+    RANGE: 'Hodnota pole %label musí být mezi %d a %d.'
+    MAX_FILE_SIZE: 'Maximální velikost nahrávaného souboru v poli %label je %d byte.'
+    MAX_POST_SIZE: 'Limit pro nahrávaná date je %d byte.'
+    IMAGE: 'Nahrávaný soubor musí být obrázek ve formátu JPEG, GIF nebo PNG.'
+    MIME_TYPE: 'Nahrávaný soubor nemá požadovaný formát.'
+
+
+ extensions:
+  gettextTranslator: \GettextTranslator\DI\Extension
+
+ services:
+  authenticator: \Authenticator
+
+ gettextTranslator:
+  lang: cs
+  files:
+   app: %dirApp%/locale
+  layout: vertical
+  height: 500
+
+production < common:
+
+development < common:
+
+console < common:
+
