@@ -1,6 +1,6 @@
 <?php
 /**
- * Z-Event
+ * Z-Scheduler
  *
  * Last revison: 12.3.2015
  * @copyright	Copyright (c) 2014 ZoraData sdružení <http://www.zoradata.cz>
@@ -15,9 +15,6 @@ use \Nette\Application\UI\Form;
 class SignPresenter extends \BasePresenter
 {
    
-   protected $backlink;
-   
-
    protected function startup()
    {
       parent::startup();
@@ -30,8 +27,6 @@ class SignPresenter extends \BasePresenter
     */
    public function actionDefault($backlink = NULL)
    {
-      if(!empty($backlink))
-         $this->backlink = $backlink;
     /*  if (ActualUser::get()->getLogoutReason() === NUser::INACTIVITY)
          $this->message = 'Uživatel byl odhlášen z důvodů neaktivity.';*/
       $form = new Form($this, 'login');
@@ -55,9 +50,7 @@ class SignPresenter extends \BasePresenter
       {
          $this->user->login($data['host'], $data['user'], $data['password']);                                                     // Přihlášení
          $this->user->setExpiration('30 MINUTES', TRUE);                                                                          // Nastavení doby trvání přihlášení
-         if (empty($this->backlink))
-            $this->redirect(':Home:default');
-         else $this->restoreRequest($this->backlink);
+         $this->redirect(':Home:default');
       }
       catch (\Nette\Security\AuthenticationException $e)
       {

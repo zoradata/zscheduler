@@ -91,3 +91,28 @@ footer {
         height: 70%;
     }
 }
+
+.panel-body {
+    padding: 15px 15px 0px 15px;
+}    
+    
+.well {
+    margin-bottom: 0px;
+}
+
+
+*::before, *::after {
+    box-sizing: border-box;
+}
+*::before, *::after {
+    box-sizing: border-box;
+}
+.form-control, input {
+    border-width: 2px;
+    box-shadow: none;
+}
+
+.form-control {
+    padding: 5px 10px;
+    height: 33px;    
+} 

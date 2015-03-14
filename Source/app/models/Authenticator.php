@@ -1,6 +1,6 @@
 <?php
 /**
- * Z-Event
+ * Z-Scheduler
  *
  * Last revison: 12.3.2015
  * @copyright	Copyright (c) 2014 ZoraData sdružení <http://www.zoradata.cz>
@@ -38,6 +38,7 @@ class Authenticator extends \Nette\Object implements Security\IAuthenticator
       catch (\DibiException $e)
       {
          $message = $e->getMessage();
+         $message = iconv(mb_detect_encoding($message, mb_detect_order(), TRUE), 'UTF-8', $message); 
          throw new Security\AuthenticationException($message, self::ERR_LOGIN);
       }
       return new Security\Identity($dbUser, NULL, $param);

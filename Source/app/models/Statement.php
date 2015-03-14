@@ -1,6 +1,6 @@
 <?php
 /**
- * Z-Event
+ * Z-Scheduler
  *
  * Last revison: 12.3.2015
  * @copyright	Copyright (c) 2014 ZoraData sdružení <http://www.zoradata.cz>
@@ -23,21 +23,21 @@ class Statement extends \Nette\Object
   
    public static function create($data)
    {
-     $sql = 'CREATE EVENT ' . $data['schema'] . '.' . $data['name'] . ' ';
+     $sql = 'CREATE EVENT ' . $data['schema'] . '.' . $data['name'] . "\n";
      if ($data['repeat'])
      {
-        $sql .= 'EVRY ' . $data['interval'] . '.' . $data['unit'] . ' ';
+        $sql .= 'EVERY ' . $data['interval'] . ' ' . $data['unit'] . "\n";
         if ($data['start'] != NULL)
-           $sql .= 'STARTS ' . $data['start'] . ' ';
+           $sql .= 'STARTS ' . $data['start'] . "\n";
         if ($data['end'] != NULL)
-           $sql .= 'ENDS ' . $data['start'] . ' ';
+           $sql .= 'ENDS ' . $data['start'] . "\n";
      }
      else
      {
-        $sql .= 'AT ' . $data['start'] . ' ';
+        $sql .= 'AT ' . $data['start'] . "\n";
      }
-     $sql .= 'COMMENT ' . $data['comment'] . ' ';
-     $sql .= 'DO ' . $data['sql'] . ' ';
+     $sql .= 'COMMENT ' . $data['comment'] . "\n";
+     $sql .= 'DO ' . $data['sql'] . "\n";
      return $sql;
    }
    

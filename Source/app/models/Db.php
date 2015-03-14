@@ -1,6 +1,6 @@
 <?php
 /**
- * Z-Event
+ * Z-Scheduler
  *
  * Last revison: 12.3.2015
  * @copyright	Copyright (c) 2014 ZoraData sdružení <http://www.zoradata.cz>
