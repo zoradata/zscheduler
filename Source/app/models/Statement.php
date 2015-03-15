@@ -23,7 +23,8 @@ class Statement extends \Nette\Object
   
    public static function create($data)
    {
-     $sql = 'CREATE EVENT ' . $data['schema'] . '.' . $data['name'] . "\n";
+     $sql = 'CREATE EVENT ' . $data['database_name'] . '.' . $data['name'] . "\n";
+     $sql .= 'ON SCHEDULE ';
      if ($data['repeat'])
      {
         $sql .= 'EVERY ' . $data['interval'] . ' ' . $data['unit'] . "\n";
@@ -36,7 +37,8 @@ class Statement extends \Nette\Object
      {
         $sql .= 'AT ' . $data['start'] . "\n";
      }
-     $sql .= 'COMMENT ' . $data['comment'] . "\n";
+     if ($data['comment'] != NULL)
+        $sql .= 'COMMENT \'' . $data['comment'] . "'\n";
      $sql .= 'DO ' . $data['sql'] . "\n";
      return $sql;
    }

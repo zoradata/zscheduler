@@ -1,0 +1,97 @@
+{*
+ Z-Scheduler
+
+ Last revison: 15.3.2015
+ Copyright (c) 2014 ZoraData sdružení (http://www.zoradata.cz)
+ *}
+ 
+ 
+<div class="col-md-7 col-sm-12">
+   <div class="panel panel-primary">
+      <div class="panel-heading">
+         <h3 class="panel-title"><i class="fa fa-calendar fa-fw"></i>&nbsp;&nbsp;Nová událost</h3>
+      </div>
+   <div class="well bs-component">
+      <div class="form-group text-right">
+         <a href="{link ':Home:default'}" title="Zpět"><i class="fa fa-reply fa-lg fa-fw text-primary"></i></a>
+      </div>
+      {$form->render('begin')}
+         {if count($form->getErrors()) > 0}
+            <div class="form-group">
+              <div class="col-lg-12 text-center">
+                 {foreach $form->getErrors() as $error}
+                    <div class="alert alert-dismissible alert-danger">
+                       <strong>{$error}</strong>
+                    </div>
+                 {/foreach}
+              </div>
+            </div>
+         {/if}
+         <div class="form-group">
+            <label class="col-lg-4 control-label">{!=$form['database_name']->label} *</label>
+            <div class="col-lg-8">
+               {!=$form['database_name']->getControl()->class('form-control')}
+            </div>
+         </div>
+         <div class="form-group">
+            <label class="col-lg-4 control-label">{!=$form['name']->label} *</label>
+            <div class="col-lg-8">
+               {!=$form['name']->getControl()->class('form-control')}
+            </div>
+         </div>
+         <div class="form-group">
+            <label class="col-lg-4 control-label">{!=$form['comment']->label}</label>
+            <div class="col-lg-8">
+               {!=$form['comment']->getControl()->class('form-control')}
+            </div>
+         </div>
+         <div class="form-group">
+            <label class="col-lg-4 control-label">{!=$form['repeat']->label}</label>
+            <div class="col-lg-8">
+               {!=$form['repeat']->getControl()->class('form-control')}
+            </div>
+         </div>
+         <div class="form-group">
+            <label class="col-lg-4 control-label">{!=$form['start']->label}</label>
+            <div class="col-lg-8">
+               {!=$form['start']->getControl()->class('form-control')}
+            </div>
+         </div>
+         <div class="form-group">
+            <label class="col-lg-4 control-label">{!=$form['end']->label}</label>
+            <div class="col-lg-8">
+               {!=$form['end']->getControl()->class('form-control')}
+            </div>
+         </div>
+         <div class="form-group">
+            <label class="col-lg-4 control-label">{!=$form['interval']->label}</label>
+            <div class="col-lg-8">
+               {!=$form['interval']->getControl()->class('form-control')}
+            </div>
+         </div>
+         <div class="form-group">
+            <label class="col-lg-4 control-label">{!=$form['unit']->label}</label>
+            <div class="col-lg-8">
+               {!=$form['unit']->getControl()->class('form-control')}
+            </div>
+         </div>
+         <div class="form-group">
+            <label class="col-lg-4 control-label">{!=$form['preserve']->label} *</label>
+            <div class="col-lg-8">
+               {!=$form['preserve']->getControl()->class('form-control')}
+            </div>
+         </div>
+         <div class="form-group">
+            <label class="col-lg-4 control-label">{!=$form['sql']->label} *</label>
+            <div class="col-lg-8">
+               {!=$form['sql']->getControl()->class('form-control')}
+            </div>
+         </div>
+         <div class="form-group">
+            <div class="col-lg-12 text-center">
+               {!=$form['save']->getControl()->class('btn btn-primary')}
+            </div>
+         </div>
+      {$form->render('end')}
+   </div>
+</div>

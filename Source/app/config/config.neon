@@ -5,6 +5,10 @@
 #
 
 common:
+ parameters:
+  delimiter: '$$'
+  pageDatabase: 16
+  pageEvent: 14
 
  php:
   date.timezone: Europe/Prague
