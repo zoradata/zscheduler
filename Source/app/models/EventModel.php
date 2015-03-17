@@ -12,22 +12,43 @@
 class EventModel extends \DbModel
 {
     
+    
+   /**
+    * Výpis verze databáze
+    * @return string Verze databáze
+    */              
+   public static function dbVersion()
+   {
+      $sql = 'SELECT VERSION()';
+      return dibi::fetchSingle($sql);
+   }
 
+   
+   /**
+    * Výpis stavu plánovače úloh
+    * @return boolean Stav plánovače (TRUE = ON, FALSE = OFF)
+    */              
+   public static function schedulerStatus()
+   {
+      $sql = 'SELECT CASE WHEN @@event_scheduler = \'ON\' THEN 1 ELSE 0 END';
+      return dibi::fetchSingle($sql);
+   }
+
+   
    /**
     * Výpis databází s počtu událostí v nich
     * @return array Pole záznamů
     */              
-   public static function database()
+   public static function database($limit, $offset)
    {
-      $sql = 'SELECT D.SCHEMA_NAME database_name, 
+      $sql = 'SELECT SQL_CALC_FOUND_ROWS D.SCHEMA_NAME database_name, 
                      NULLIF(SUM(CASE WHEN E.STATUS != \'DISABLED\' THEN 1 ELSE 0 END), 0) count_enabled,
                      NULLIF(SUM(CASE WHEN E.STATUS = \'DISABLED\' THEN 1 ELSE 0 END), 0) count_disabled
               FROM INFORMATION_SCHEMA.SCHEMATA D
               LEFT JOIN INFORMATION_SCHEMA.EVENTS E ON E.EVENT_SCHEMA = D.SCHEMA_NAME
               GROUP BY database_name
-              /*HAVING count_enabled > 0 OR count_disabled > 0*/
-              ORDER BY database_name';
-      return dibi::fetchAll($sql);
+              ORDER BY database_name %ofs %lmt';
+      return dibi::fetchAll($sql, $offset, $limit);
    }
 
    
@@ -57,7 +78,19 @@ class EventModel extends \DbModel
       return dibi::fetchPairs($sql);
    }
 
+
+   /**
+    * Výpis událostí
+    * @return array Pole záznamů
+    */              
+   public static function event($db, $limit, $offset)
+   {
+      $sql = 'SELECT * FROM INFORMATION_SCHEMA.EVENTS
+              WHERE EVENT_SCHEMA LIKE IFNULL(%sN, \'%\') ORDER BY EVENT_SCHEMA, EVENT_NAME %ofs %lmt';
+      return dibi::fetchAll($sql, $db, $offset, $limit);
+   }
    
+      
    /**
     * Jednotky času pro HTML tag SELECT
     * @return array Pole pro HTML tag SELECT

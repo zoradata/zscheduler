@@ -17,6 +17,14 @@ abstract class LoginPresenter extends BasePresenter
    public $db;
 
    
+   /** @var VisualPaginator Stránkovač výpisu databází */
+   public $pageDb;
+
+   
+   /** @var VisualPaginator Stránkovač výpisu událostí */
+   public $pageEvent;
+
+   
    /**
     * Definice persistentních parametrů
     * @return array Pole parametrů
@@ -25,19 +33,27 @@ abstract class LoginPresenter extends BasePresenter
    {
       return array('db');
    }
-    
    
-  protected function startup()
-  {
+   
+   /**
+    * Definice persistentních komponent
+    * @return array Pole komponent
+    */
+   public static function getPersistentComponents()
+   {
+        return array('pageDb', 'pageEvent');
+   }
+  
+   
+   protected function startup()
+   {
       parent::startup();
 
       if (!$this->getUser()->isLoggedIn())                                                                                        // Je přihlášen uživatel?
-      {
-         $backlink = $this->storeRequest();                                                                                       // Ne - Skok na přihlášení
-         $this->forward(':Sign:default');
-      }
-      dibi::connect($this->getUser()->getIdentity()->getData());
-
+         $this->forward(':Sign:default');                                                                                         // Ne - Skok na přihlášení
+      dibi::connect($this->getUser()->getIdentity()->getData());                                                                  // Ano - Přihlásit do DB
+      $this->pageDb = new VisualPaginator($this, 'pageDb', 10);                                                                       // Vytvoření instance stránkovače výpisu databází
+      $this->pageEvent = new VisualPaginator($this, 'pageEvent', 10);                                                                 // Vytvoření instance stránkovače výpisu událostí
    }
    
 

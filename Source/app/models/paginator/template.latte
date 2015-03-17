@@ -1,0 +1,44 @@
+{*
+ * @version    $Id: template.phtml 2 2009-07-13 20:58:52Z david@grudl.com $
+ * @param Paginator $paginator
+ * @param array     $steps
+ *}
+
+<ul class="pagination pagination-sm pagination-left">
+   <li class="active">
+      <a href="#">
+         {if $paginator->itemCount > 0}
+            {($paginator->getPage()-1) * $paginator->getItemsPerPage() + 1} -
+            {($paginator->getPage()-1) * $paginator->getItemsPerPage() + $paginator->getLength()} /
+            {$paginator->itemCount}
+         {else}
+            0 - 0 / 0
+         {/if}
+      </a>
+   </li>
+</ul>
+
+{if $paginator->pageCount > 1}
+   <ul class="pagination pagination-sm pagination-right">
+      {if $paginator->isFirst()}
+         <li class="disabled"><a href="#">&lt;&lt;</a></li>
+      {else}
+         <li><a href="{link this, 'page' => $paginator->page - 1}">&lt;&lt;</a></li>
+      {/if}
+      {foreach $steps as $step}
+         {if $step == $paginator->page}
+            <li class="active"><a href="#">{$step}</a></li>
+         {else}
+            <li><a href="{link this, 'page' => $step}">{$step}</a></li>
+         {/if}
+         {if $iterator->nextValue > $step + 1}
+            <li>…</li>
+         {/if}
+      {/foreach}
+      {if $paginator->isLast()}
+         <li class="disabled"><a href="#">&gt;&gt;</a></li>
+      {else}
+         <li><a href="{link this, 'page' => $paginator->page + 1}">&gt;&gt;</a></li>
+      {/if}
+   </ul>
+{/if}

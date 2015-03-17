@@ -2,7 +2,7 @@
 /**
  * Z-Scheduler
  *
- * Last revison: 15.3.2015
+ * Last revison: 17.3.2015
  * @copyright	Copyright (c) 2014 ZoraData sdružení <http://www.zoradata.cz>
  * 
  * Presenter pro správu událostí
@@ -34,12 +34,17 @@ class HomePresenter extends \LoginPresenter
     */
    public function actionDefault($db = NULL)
    {
-      $this->template->dbVersion = dibi::fetchSingle('SELECT VERSION()');
-      $this->template->schedulerStatus = dibi::fetchSingle('SELECT CASE WHEN @@event_scheduler = \'ON\' THEN 1 ELSE 0 END');
-      $this->template->databases = EventModel::database();
+      $this->template->dbVersion = EventModel::dbVersion();
+      $this->template->schedulerStatus = EventModel::schedulerStatus();
+
       $this->template->databaseTotal = EventModel::databaseTotal();
-      $this->template->events = dibi::fetchAll('SELECT * FROM INFORMATION_SCHEMA.EVENTS WHERE EVENT_SCHEMA LIKE IFNULL(%sN, \'%\')', $db);
-//    $this->template->previousLogin = $this->userModel->previousLogin($this->getUser()->getIdentity()->id);
+      $paginatorDb = $this->pageDb->getPaginator();
+      $this->template->databases = EventModel::database($paginatorDb->itemsPerPage, $paginatorDb->offset);
+      $paginatorDb->itemCount = EventModel::countRows();
+
+      $paginatorEvent = $this->pageEvent->getPaginator();
+      $this->template->events = EventModel::event($db, $paginatorEvent->itemsPerPage, $paginatorEvent->offset);
+      $paginatorEvent->itemCount = EventModel::countRows();
    }
 
    
@@ -156,6 +161,4 @@ class HomePresenter extends \LoginPresenter
       $this->redirect(':Home:default');
    }
 
-   
 }
-

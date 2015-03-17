@@ -116,3 +116,19 @@ footer {
     padding: 5px 10px;
     height: 33px;    
 } 
+
+.pagination {
+    margin: 4px 0;
+}
+
+.pagination-left {
+    float: left;
+}
+
+.pagination-right {
+    float: right;
+}
+
+a.pagination {
+    text-decoration: none;
+}

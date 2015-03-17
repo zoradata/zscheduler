@@ -15,8 +15,6 @@
  */
 
  
-namespace BaseModule;
- 
 use Nette\Application\UI\Control; 
 use Nette\Utils\Paginator;
 
@@ -40,16 +38,12 @@ class VisualPaginator extends Control
    /** @persistent */
    public $perPage = 0;
 
-   /** @persistent */
-   private $countRecords;
 
-
-   public function __construct($parent = NULL, $name = NULL, $perPage = 15, $countRecords = array(10, 15, 20))
+   public function __construct($parent = NULL, $name = NULL, $perPage = 15)
    {
       parent::__construct($parent, $name);
       if ($this->perPage == 0)
          $this->perPage = $perPage;
-      $this->countRecords = $countRecords;
    }
 
         
@@ -89,7 +83,6 @@ class VisualPaginator extends Control
 			$steps = array_values(array_unique($arr));
 		}
 
-		$this->template->countRecords = $this->countRecords;
 		$this->template->steps = $steps;
 		$this->template->paginator = $paginator;
 		$this->template->setFile(dirname(__FILE__) . '/template.latte');

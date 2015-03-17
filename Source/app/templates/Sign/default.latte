@@ -1,7 +1,7 @@
 {*
  Z-Scheduler
 
- Last revison: 14.3.2015
+ Last revison: 17.3.2015
  Copyright (c) 2014 ZoraData sdružení (http://www.zoradata.cz)
 
  *}
@@ -12,6 +12,20 @@
       <h2>&nbsp;</h2>
    </div>
 </div>
+
+{if count($form->getErrors()) > 0}
+   <div class="row">
+      <div class="col-lg-6 col-lg-offset-3 text-center">
+         <div class="bs-component">
+            {foreach $form->getErrors() as $error}
+               <div class="alert alert-dismissible alert-danger">
+                  <strong>{$error}</strong>
+               </div>
+            {/foreach}
+         </div>
+      </div>
+   </div>
+{/if}
 
 <div class="row">
    <div class="col-lg-6 col-lg-offset-3">
@@ -44,18 +58,4 @@
       </div>
    </div>
 </div>
-
-{if count($form->getErrors()) > 0}
-   <div class="row">
-      <div class="col-lg-6 col-lg-offset-3 text-center">
-         <div class="bs-component">
-            {foreach $form->getErrors() as $error}
-               <div class="alert alert-dismissible alert-danger">
-                  <strong>{$error}</strong>
-               </div>
-            {/foreach}
-         </div>
-      </div>
-   </div>
-{/if}
 {/block}
