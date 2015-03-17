@@ -34,14 +34,7 @@ class HomePresenter extends \LoginPresenter
     */
    public function actionDefault($db = NULL)
    {
-      $this->template->dbVersion = EventModel::dbVersion();
-      $this->template->schedulerStatus = EventModel::schedulerStatus();
-
-      $this->template->databaseTotal = EventModel::databaseTotal();
-      $paginatorDb = $this->pageDb->getPaginator();
-      $this->template->databases = EventModel::database($paginatorDb->itemsPerPage, $paginatorDb->offset);
-      $paginatorDb->itemCount = EventModel::countRows();
-
+      $this->setBaseData();
       $paginatorEvent = $this->pageEvent->getPaginator();
       $this->template->events = EventModel::event($db, $paginatorEvent->itemsPerPage, $paginatorEvent->offset);
       $paginatorEvent->itemCount = EventModel::countRows();
@@ -102,10 +95,7 @@ class HomePresenter extends \LoginPresenter
     */
    public function actionDetail($database, $event)
    {
-      $this->template->dbVersion = dibi::fetchSingle('SELECT VERSION()');
-      $this->template->schedulerStatus = dibi::fetchSingle('SELECT CASE WHEN @@event_scheduler = \'ON\' THEN 1 ELSE 0 END');
-      $this->template->databases = EventModel::database();
-      $this->template->databaseTotal = EventModel::databaseTotal();
+      $this->setBaseData();
       $this->template->detail = EventModel::detail($database, $event);
    }
 
@@ -115,13 +105,10 @@ class HomePresenter extends \LoginPresenter
     */
    public function actionNew()
    {
-      $this->template->dbVersion = dibi::fetchSingle('SELECT VERSION()');
-      $this->template->schedulerStatus = dibi::fetchSingle('SELECT CASE WHEN @@event_scheduler = \'ON\' THEN 1 ELSE 0 END');
-      $this->template->databases = EventModel::database();
-      $this->template->databaseTotal = EventModel::databaseTotal();
+      $this->setBaseData();
       $defaults = array();
-      if ($this->database != NULL)
-         $defaults['database_name'] = $this->database;
+      if ($this->db != NULL)
+         $defaults['database_name'] = $this->db;
       $form = new Form($this, 'event');
       $form->getElementPrototype()->class('form-horizontal');
       $form->addSelect('database_name', 'Databáze', EventModel::selectDatabase())->addRule(Form::FILLED)->setPrompt(' -- Vyberte --');
@@ -161,4 +148,19 @@ class HomePresenter extends \LoginPresenter
       $this->redirect(':Home:default');
    }
 
+   
+   /**
+    * Načtení základních dat
+    */
+   private function setBaseData()
+   {
+      $this->template->dbVersion = EventModel::dbVersion();
+      $this->template->schedulerStatus = EventModel::schedulerStatus();
+
+      $this->template->databaseTotal = EventModel::databaseTotal();
+      $paginatorDb = $this->pageDb->getPaginator();
+      $this->template->databases = EventModel::database($paginatorDb->itemsPerPage, $paginatorDb->offset);
+      $paginatorDb->itemCount = EventModel::countRows();
+   }
+   
 }
