@@ -1,1 +1,0 @@
-Jazyková podpora

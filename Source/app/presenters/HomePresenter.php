@@ -4,6 +4,8 @@
  *
  * Last revison: 15.3.2015
  * @copyright	Copyright (c) 2014 ZoraData sdružení <http://www.zoradata.cz>
+ * 
+ * Presenter pro správu událostí
  */
 
 

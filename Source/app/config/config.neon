@@ -1,14 +1,14 @@
 #
-# Z-Sklad
+# Z-Scheduler
 #
-# Konfigurace vývojového prostředí (XAMPP)
+# Konfigurace prostředí
 #
 
 common:
  parameters:
   delimiter: '$$'
-  pageDatabase: 16
-  pageEvent: 14
+  pageDatabase: 14                                                              # Počet záznamu ns stránku ve výpisu databází
+  pageEvent: 16                                                                 # Počet záznamu ns stránku ve výpisu událostí
 
  php:
   date.timezone: Europe/Prague

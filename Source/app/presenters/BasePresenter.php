@@ -4,20 +4,16 @@
  *
  * Last revison: 12.3.2015
  * @copyright	Copyright (c) 2014 ZoraData sdružení <http://www.zoradata.cz>
+ * 
+ * Základní presenter
  */
 
 
 abstract class BasePresenter extends \Nette\Application\UI\Presenter
 
 {
-   /** @var string Název vzhledu */
-   public $skin = 'skin5';
-   
 
    public $session;
-
-   /** @var DibiConnection Připojení k databázi */
-   public $db;
 
    /** @var HttpResponse HTTP odpověď */
    public $httpResponse;
@@ -30,7 +26,6 @@ abstract class BasePresenter extends \Nette\Application\UI\Presenter
    {
       parent::startup();
       $this->session = $this->context->getService('session');                                                                     // Načtení session
-//      $this->db = $this->context->db;                                                                                             // Otevření databáze
       $this->httpResponse = $this->context->getByType('Nette\Http\Response');                                                     // Načtení HTTP odpovědi
    }
 

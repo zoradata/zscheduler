@@ -4,6 +4,8 @@
  *
  * Last revison: 12.3.2015
  * @copyright	Copyright (c) 2014 ZoraData sdružení <http://www.zoradata.cz>
+ * 
+ * Základní presenter po přihlášení
  */
 
 
@@ -32,7 +34,7 @@ abstract class LoginPresenter extends BasePresenter
       if (!$this->getUser()->isLoggedIn())                                                                                        // Je přihlášen uživatel?
       {
          $backlink = $this->storeRequest();                                                                                       // Ne - Skok na přihlášení
-         $this->forward(':Sign:default', $backlink);
+         $this->forward(':Sign:default');
       }
       dibi::connect($this->getUser()->getIdentity()->getData());
 

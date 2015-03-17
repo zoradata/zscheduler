@@ -5,7 +5,7 @@
  * Last revison: 12.3.2015
  * @copyright	Copyright (c) 2014 ZoraData sdružení <http://www.zoradata.cz>
  * 
- * Presenter pro přihlášení uživatele
+ * Presenter pro přihlášení a odhlášení uživatele
  */
 
 
@@ -23,9 +23,8 @@ class SignPresenter extends \BasePresenter
 
    /**
     * Akce - Přihlášení uživatele do aplikace
-    * @param type $backlink
     */
-   public function actionDefault($backlink = NULL)
+   public function actionDefault()
    {
     /*  if (ActualUser::get()->getLogoutReason() === NUser::INACTIVITY)
          $this->message = 'Uživatel byl odhlášen z důvodů neaktivity.';*/
@@ -67,6 +66,5 @@ class SignPresenter extends \BasePresenter
       $this->user->logout(TRUE);                                                                                                  // Vlastní odhlášení
       $this->redirect(':Home:default');
    }
-
    
 }
