@@ -39,10 +39,14 @@ class EventForm extends \Nette\Object
       $form->addText('comment', 'Popis', NULL, 200);
       $form->addSelect('status', 'Stav', EventModel::selectStatus())->addRule(Form::FILLED);
       $form->addSelect('repeat', 'Opakovaná', $this->presenter->getLogical())->addRule(Form::FILLED);
-      $form->addText('start', 'Začátek', NULL, 20);
-      $form->addText('end', 'Konec', NULL, 20);
-      $form->addText('interval', 'Interval', NULL, 200);
-      $form->addSelect('unit', 'Jednotka', EventModel::selectUnit());
+      $form->addText('start', 'Začátek', NULL, 20)
+           ->addCondition(Form::FILLED)
+           ->addRule(Form::PATTERN, 'Pole %label musí mít tvar RRRR-MM-DD HH:MI:SS', '([1-3][0-9]{3,3})-(0?[1-9]|1[0-2])-(0?[1-9]|[1-2][1-9]|3[0-1])\s([0-1][0-9]|2[0-4]):([0-5][0-9]):([0-5][0-9])');
+      $form->addText('end', 'Konec', NULL, 20)
+           ->addCondition(Form::FILLED)
+           ->addRule(Form::PATTERN, 'Pole %label musí mít tvar RRRR-MM-DD HH:MI:SS', '([1-3][0-9]{3,3})-(0?[1-9]|1[0-2])-(0?[1-9]|[1-2][1-9]|3[0-1])\s([0-1][0-9]|2[0-4]):([0-5][0-9]):([0-5][0-9])');
+      $form->addText('interval', 'Interval', NULL, 200)->addCondition(Form::FILLED)->addCondition(Form::INTEGER);
+      $form->addSelect('unit', 'Jednotka', EventModel::selectUnit())->setPrompt(' -- Vyberte --');
       $form->addSelect('preserve', 'Smazat po ukončení', $this->presenter->getLogical())->addRule(Form::FILLED);
       $form->addTextArea('sql', 'SQL příkaz', NULL, NULL)->addRule(Form::FILLED);
       $form->addSubmit('save', 'Vytvořit')->onClick[] = array($this->presenter, $callback);

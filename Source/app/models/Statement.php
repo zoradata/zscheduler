@@ -38,9 +38,9 @@ class Statement extends \Nette\Object
      {
         $sql .= 'EVERY ' . $data['interval'] . ' ' . $data['unit'] . "\n";
         if ($data['start'] != NULL)
-           $sql .= 'STARTS ' . $data['start'] . "\n";
+           $sql .= 'STARTS \'' . $data['start'] . "'\n";
         if ($data['end'] != NULL)
-           $sql .= 'ENDS ' . $data['start'] . "\n";
+           $sql .= 'ENDS \'' . $data['start'] . "'\n";
      }
      else
      {
@@ -49,7 +49,7 @@ class Statement extends \Nette\Object
      switch ($data['status'])
      {
         case 'ENABLED':
-           $sql .= 'ENABLE' . "'\n";
+           $sql .= 'ENABLE' . "\n";
            break;
         case 'SLAVESIDE_DISABLED':
            $sql .= 'DISABLE ON SLAVE' . "'\n";

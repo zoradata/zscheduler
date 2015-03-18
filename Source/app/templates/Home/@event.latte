@@ -1,11 +1,11 @@
 {*
  Z-Scheduler
 
- Last revison: 15.3.2015
+ Last revison: 18.3.2015
  Copyright (c) 2014 ZoraData sdružení (http://www.zoradata.cz)
  *}
- 
- 
+
+
 <div class="col-md-7 col-sm-12">
    <div class="panel panel-primary">
       <div class="panel-heading">
@@ -51,22 +51,30 @@
                      <td>
                         {$event->EVENT_NAME}
                      </td>
-                     <td>
-                        {if $event->STATUS == 'ENABLED'}
-                           <a href="{link ':Home:disable', $event->EVENT_SCHEMA, $event->EVENT_NAME}" title="Zastavit"><i class="fa fa-power-off fa-lg fa-fw text-danger"></i></a>
-                        {else}
-                           {if $event->STATUS == 'DISABLED' or 'DISABLED ON SLAVE'}
-                              <a href="{link ':Home:enable', $event->EVENT_SCHEMA, $event->EVENT_NAME}" title="Spustit"><i class="fa fa-power-off fa-lg fa-fw text-success"></i> 
-                           {/if}
-                        {/if}
-                     </td>
-                     <td>
-                        {if $event->STATUS != 'SLAVESIDE_DISABLED'}
+                     {if $event->STATUS == 'ENABLED'}
+                        <td>
                            <a href="{link ':Home:disableslave', $event->EVENT_SCHEMA, $event->EVENT_NAME}" title="Zastavit na podřízeném"><i class="fa fa-power-off fa-lg fa-fw text-warning"></i></a>
-                        {else}
+                        </td>
+                        <td>
                            <a href="{link ':Home:disable', $event->EVENT_SCHEMA, $event->EVENT_NAME}" title="Zastavit"><i class="fa fa-power-off fa-lg fa-fw text-danger"></i></a>
-                        {/if}
-                     </td>
+                        </td>
+                     {/if}
+                     {if $event->STATUS == 'SLAVESIDE_DISABLED'}
+                        <td>
+                           <a href="{link ':Home:enable', $event->EVENT_SCHEMA, $event->EVENT_NAME}" title="Spustit"><i class="fa fa-power-off fa-lg fa-fw text-success"></i> 
+                        </td>
+                        <td>
+                           <a href="{link ':Home:disable', $event->EVENT_SCHEMA, $event->EVENT_NAME}" title="Zastavit"><i class="fa fa-power-off fa-lg fa-fw text-danger"></i></a>
+                        </td>
+                     {/if}
+                     {if $event->STATUS == 'DISABLED'}
+                        <td>
+                           <a href="{link ':Home:enable', $event->EVENT_SCHEMA, $event->EVENT_NAME}" title="Spustit"><i class="fa fa-power-off fa-lg fa-fw text-success"></i> 
+                        </td>
+                        <td>
+                           <a href="{link ':Home:disableslave', $event->EVENT_SCHEMA, $event->EVENT_NAME}" title="Zastavit na podřízeném"><i class="fa fa-power-off fa-lg fa-fw text-warning"></i></a>
+                        </td>
+                     {/if}
                      <td>
                         <a href="{link ':Home:detail', $event->EVENT_SCHEMA, $event->EVENT_NAME}" title="Detail"><i class="fa fa-indent fa-lg fa-fw text-primary"></i></a>
                      </td>

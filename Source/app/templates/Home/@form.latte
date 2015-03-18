@@ -4,7 +4,7 @@
  Last revison: 15.3.2015
  Copyright (c) 2014 ZoraData sdružení (http://www.zoradata.cz)
  *}
- 
+
  
 <div class="col-md-7 col-sm-12">
    <div class="panel panel-primary">
@@ -101,3 +101,23 @@
       {$form->render('end')}
    </div>
 </div>
+
+<script>
+   $("#frm-event-repeat").change(function() {
+      if ($("#frm-event-repeat").val() == "0")
+      {   
+         $("#frm-event-end").val("");
+         $("#frm-event-end").prop("disabled", true);
+         $("#frm-event-interval").val("");
+         $("#frm-event-interval").prop("disabled", true);
+         $("#frm-event-unit").val("");
+         $("#frm-event-unit").prop("disabled", true);
+      }
+      else
+      {   
+         $("#frm-event-end").prop("disabled", false);
+         $("#frm-event-interval").prop("disabled", false);
+         $("#frm-event-unit").prop("disabled", false);
+      }
+   });    
+</script> 
