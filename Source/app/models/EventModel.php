@@ -2,7 +2,7 @@
 /**
  * Z-Scheduler
  *
- * Last revison: 15.3.2015
+ * Last revison: 18.3.2015
  * @copyright	Copyright (c) 2014 ZoraData sdružení <http://www.zoradata.cz>
  * 
  * Databázový model pro události
@@ -117,6 +117,8 @@ class EventModel extends \DbModel
 
    /**
     * Databáze pro HTML tag SELECT
+    * @param string $database Jméno databáze
+    * @param string $event Jméno události
     * @return array Pole pro HTML tag SELECT
     */              
    public static function detail($database, $event)
@@ -130,6 +132,18 @@ class EventModel extends \DbModel
               FROM INFORMATION_SCHEMA.EVENTS
               WHERE EVENT_SCHEMA = %sN AND EVENT_NAME = %sN';
       return dibi::fetch($sql, $database, $event);
+   }
+
+   
+   /**
+    * Zrušení události
+    * @param string $database Jméno databáze
+    * @param string $event Jméno události
+    */              
+   public static function drop($database, $event)
+   {
+      $sql = 'DROP EVENT %sql.%sql';
+      dibi::query($sql, $database, $event);
    }
 
 }

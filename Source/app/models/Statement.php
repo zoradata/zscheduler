@@ -2,7 +2,7 @@
 /**
  * Z-Scheduler
  *
- * Last revison: 17.3.2015
+ * Last revison: 18.3.2015
  * @copyright	Copyright (c) 2014 ZoraData sdružení <http://www.zoradata.cz>
  * 
  * Vytvoření příkazů pro událost
@@ -13,7 +13,9 @@ class Statement extends \Nette\Object
 {
     
 
-   private function __construct();
+   private function __construct()
+   {
+   }
 
            
    public static function create($data)
@@ -28,26 +30,26 @@ class Statement extends \Nette\Object
    }
 
    
-   private static function statement($sql, $data)
+   private static function statement($command, $data)
    {
-     $output .= $sql . $data['database_name'] . '.' . $data['name'] . "\n";
-     $output .= 'ON SCHEDULE ';
+     $sql = $command . $data['database_name'] . '.' . $data['name'] . "\n";
+     $sql .= 'ON SCHEDULE ';
      if ($data['repeat'])
      {
-        $output .= 'EVERY ' . $data['interval'] . ' ' . $data['unit'] . "\n";
+        $sql .= 'EVERY ' . $data['interval'] . ' ' . $data['unit'] . "\n";
         if ($data['start'] != NULL)
-           $output .= 'STARTS ' . $data['start'] . "\n";
+           $sql .= 'STARTS ' . $data['start'] . "\n";
         if ($data['end'] != NULL)
-           $output .= 'ENDS ' . $data['start'] . "\n";
+           $sql .= 'ENDS ' . $data['start'] . "\n";
      }
      else
      {
-        $output .= 'AT ' . $data['start'] . "\n";
+        $sql .= 'AT ' . $data['start'] . "\n";
      }
      if ($data['comment'] != NULL)
-        $output .= 'COMMENT \'' . $data['comment'] . "'\n";
-     $output .= 'DO ' . $data['sql'] . "\n";
-     return $output;
+        $sql .= 'COMMENT \'' . $data['comment'] . "'\n";
+     $sql .= 'DO ' . $data['sql'] . "\n";
+     return $sql;
    }
    
 }

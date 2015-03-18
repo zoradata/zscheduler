@@ -2,30 +2,22 @@
 /**
  * Z-Scheduler
  *
- * Last revison: 17.3.2015
+ * Last revison: 18.3.2015
  * @copyright	Copyright (c) 2014 ZoraData sdružení <http://www.zoradata.cz>
  * 
  * Presenter pro správu událostí
  */
 
 
-use \Nette\Application\UI\Form;
-
-
 class HomePresenter extends \LoginPresenter
 {
 
-   /** @var EventModel DB model */
- //  protected $eventModel;
-
-  
    /**
     * Inicializace presenteru
     */
    public function startup()
    {
       parent::startup();
-//      $this->eventModel = EventModel();
    }
 
    
@@ -56,7 +48,7 @@ class HomePresenter extends \LoginPresenter
     */
    public function actionOn()
    {
-      dibi::query('SET GLOBAL event_scheduler = ON');
+      SchedulerModel::start();
       $this->redirect(':Home:default');
    }
 
@@ -66,7 +58,7 @@ class HomePresenter extends \LoginPresenter
     */
    public function actionOff()
    {
-      dibi::query('SET GLOBAL event_scheduler = OFF');
+      SchedulerModel::stop();
       $this->redirect(':Home:default');
    }
 
@@ -106,23 +98,11 @@ class HomePresenter extends \LoginPresenter
    public function actionNew()
    {
       $this->setBaseData();
-      $defaults = array();
+      $defaults = array('preserve'=>0);
       if ($this->db != NULL)
          $defaults['database_name'] = $this->db;
-      $form = new Form($this, 'event');
-      $form->getElementPrototype()->class('form-horizontal');
-      $form->addSelect('database_name', 'Databáze', EventModel::selectDatabase())->addRule(Form::FILLED)->setPrompt(' -- Vyberte --');
-      $form->addText('name', 'Jméno', NULL, 64)->addRule(Form::FILLED);
-      $form->addText('comment', 'Popis', NULL, 200);
-      $form->addSelect('repeat', 'Opakovaně', $this->getLogical())->addRule(Form::FILLED);
-      $form->addText('start', 'Začátek', NULL, 20);
-      $form->addText('end', 'Konec', NULL, 20);
-      $form->addText('interval', 'Interval', NULL, 200);
-      $form->addSelect('unit', 'Jednotka', EventModel::selectUnit());
-      $form->addSelect('preserve', 'Smazat po ukončení', $this->getLogical())->addRule(Form::FILLED);
-      $form->addTextArea('sql', 'SQL příkaz', NULL, NULL)->addRule(Form::FILLED);
-      $form->addSubmit('save', 'Vytvořit')->onClick[] = array($this, 'submitNew');
-      $this->template->form = $form;
+      $eventForm = new EventForm($this);
+      $this->template->form = $eventForm->manage($defaults, 'submitNew');
    }
 
    
@@ -139,6 +119,70 @@ class HomePresenter extends \LoginPresenter
       {
          //dibi::query('DELIMITER $$');
          dibi::query($sql);
+      }
+      catch (Exception $e)
+      {
+         $button->getForm()->addError($e->getMessage());
+         return FALSE;        
+      }
+      $this->redirect(':Home:default');
+   }
+
+   
+   /**
+    * Akce - Změna události
+    */
+   public function actionEdit($database, $event)
+   {
+      $this->setBaseData();
+      $defaults = EventModel::detail($database, $event);
+      $eventForm = new EventForm($this);
+      $this->template->form = $eventForm->manage($defaults, 'submitEdit');
+   }
+
+   
+   /**
+    * Akce - Změna události - Zpracování dat
+    * @param Nette\Forms\Controls\SubmitButton $button Submit button formuláře
+    */
+   public function submitEdit(\Nette\Forms\Controls\SubmitButton $button)
+   {
+      $data = $button->getForm()->getValues();
+      $sql = Statement::alter($data);
+      try
+      {
+         dibi::query($sql);
+      }
+      catch (Exception $e)
+      {
+         $button->getForm()->addError($e->getMessage());
+         return FALSE;        
+      }
+      $this->redirect(':Home:default');
+   }
+
+   
+   /**
+    * Akce - Smazání události
+    */
+   public function actionDelete($database, $event)
+   {
+      $this->setBaseData();
+      $this->template->detail = EventModel::detail($database, $event);
+      $eventForm = new EventForm($this);
+      $this->template->form = $eventForm->delete('submitDelete');
+   }
+
+   
+   /**
+    * Akce - Změna události - Zpracování dat
+    * @param Nette\Forms\Controls\SubmitButton $button Submit button formuláře
+    */
+   public function submitDelete(\Nette\Forms\Controls\SubmitButton $button)
+   {
+      try
+      {
+         EventModel::drop($this->template->detail->database_name, $this->template->detail->name);
       }
       catch (Exception $e)
       {

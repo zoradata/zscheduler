@@ -25,7 +25,8 @@
                <tbody> 
                   <tr>
                      <th colspan="2" class="text-right">
-                        <a href="{link ':Home:edit', array()}" title="Úpava události"><i class="fa fa-edit fa-lg fa-fw text-primary"></i></a>&nbsp;&nbsp;
+                        <a href="{link ':Home:edit', $detail->database_name, $detail->name}" title="Úprava události"><i class="fa fa-edit fa-lg fa-fw text-primary"></i></a>&nbsp;&nbsp;
+                        <a href="{link ':Home:delete', $detail->database_name, $detail->name}" title="Zrušení události"><i class="fa fa-trash-o fa-lg fa-fw text-primary"></i></a>&nbsp;&nbsp;
                         <a href="{link ':Home:default'}" title="Zpět"><i class="fa fa-reply fa-lg fa-fw text-primary"></i></a>
                      </th>
                   </tr>
