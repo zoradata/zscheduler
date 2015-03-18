@@ -46,6 +46,19 @@ class Statement extends \Nette\Object
      {
         $sql .= 'AT ' . $data['start'] . "\n";
      }
+     switch ($data['status'])
+     {
+        case 'ENABLED':
+           $sql .= 'ENABLE' . "'\n";
+           break;
+        case 'SLAVESIDE_DISABLED':
+           $sql .= 'DISABLE ON SLAVE' . "'\n";
+           break;
+        case 'DISABLED':
+           $sql .= 'DISABLE' . "'\n";
+           break;
+        default:
+     }
      if ($data['comment'] != NULL)
         $sql .= 'COMMENT \'' . $data['comment'] . "'\n";
      $sql .= 'DO ' . $data['sql'] . "\n";

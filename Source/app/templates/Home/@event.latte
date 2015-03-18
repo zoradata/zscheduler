@@ -18,11 +18,13 @@
                   <td>
                      Stav
                   </td>
-                  <td style="width: 45%">
+                  <td style="width: 40%">
                      Databáze
                   </td>
-                  <td style="width: 45%">
+                  <td style="width: 50%">
                      Událost
+                  </td>
+                  <td>
                   </td>
                   <td>
                   </td>
@@ -34,9 +36,13 @@
                   <tr>
                      <td>
                         {if $event->STATUS == 'ENABLED'}
-                           <i class="fa fa-square fa-lg fa-fw text-success"></i>                               
-                        {else}
-                           <i class="fa fa-square fa-lg fa-fw text-danger"></i>                               
+                           <a href="#" title="Zapnutá"><i class="fa fa-square fa-lg fa-fw text-success"></i></a>                            
+                        {/if}
+                        {if $event->STATUS == 'DISABLED'}
+                           <a href="#" title="Vypnutá"><i class="fa fa-square fa-lg fa-fw text-danger"></i></a>            
+                        {/if}
+                        {if $event->STATUS == 'SLAVESIDE_DISABLED'}
+                           <a href="#" title="Vypnutá na podřízeném"><i class="fa fa-square fa-lg fa-fw text-warning"></i></a> 
                         {/if}
                      </td>
                      <td>
@@ -49,7 +55,16 @@
                         {if $event->STATUS == 'ENABLED'}
                            <a href="{link ':Home:disable', $event->EVENT_SCHEMA, $event->EVENT_NAME}" title="Zastavit"><i class="fa fa-power-off fa-lg fa-fw text-danger"></i></a>
                         {else}
-                           <a href="{link ':Home:enable', $event->EVENT_SCHEMA, $event->EVENT_NAME}" title="Spustit"><i class="fa fa-power-off fa-lg fa-fw text-success"></i>                               
+                           {if $event->STATUS == 'DISABLED' or 'DISABLED ON SLAVE'}
+                              <a href="{link ':Home:enable', $event->EVENT_SCHEMA, $event->EVENT_NAME}" title="Spustit"><i class="fa fa-power-off fa-lg fa-fw text-success"></i> 
+                           {/if}
+                        {/if}
+                     </td>
+                     <td>
+                        {if $event->STATUS != 'SLAVESIDE_DISABLED'}
+                           <a href="{link ':Home:disableslave', $event->EVENT_SCHEMA, $event->EVENT_NAME}" title="Zastavit na podřízeném"><i class="fa fa-power-off fa-lg fa-fw text-warning"></i></a>
+                        {else}
+                           <a href="{link ':Home:disable', $event->EVENT_SCHEMA, $event->EVENT_NAME}" title="Zastavit"><i class="fa fa-power-off fa-lg fa-fw text-danger"></i></a>
                         {/if}
                      </td>
                      <td>

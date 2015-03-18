@@ -42,8 +42,9 @@ class EventModel extends \DbModel
    public static function database($limit, $offset)
    {
       $sql = 'SELECT SQL_CALC_FOUND_ROWS D.SCHEMA_NAME database_name, 
-                     NULLIF(SUM(CASE WHEN E.STATUS != \'DISABLED\' THEN 1 ELSE 0 END), 0) count_enabled,
-                     NULLIF(SUM(CASE WHEN E.STATUS = \'DISABLED\' THEN 1 ELSE 0 END), 0) count_disabled
+                     NULLIF(SUM(CASE WHEN E.STATUS = \'ENABLED\' THEN 1 ELSE 0 END), 0) count_enabled,
+                     NULLIF(SUM(CASE WHEN E.STATUS = \'DISABLED\' THEN 1 ELSE 0 END), 0) count_disabled,
+                     NULLIF(SUM(CASE WHEN E.STATUS = \'SLAVESIDE_DISABLED\' THEN 1 ELSE 0 END), 0) count_disabled_on_slave
               FROM INFORMATION_SCHEMA.SCHEMATA D
               LEFT JOIN INFORMATION_SCHEMA.EVENTS E ON E.EVENT_SCHEMA = D.SCHEMA_NAME
               GROUP BY database_name
@@ -58,8 +59,9 @@ class EventModel extends \DbModel
     */              
    public static function databaseTotal()
    {
-      $sql = 'SELECT NULLIF(SUM(CASE WHEN E.STATUS != \'DISABLED\' THEN 1 ELSE 0 END), 0) count_enabled,
-                     NULLIF(SUM(CASE WHEN E.STATUS = \'DISABLED\' THEN 1 ELSE 0 END), 0) count_disabled
+      $sql = 'SELECT NULLIF(SUM(CASE WHEN E.STATUS = \'ENABLED\' THEN 1 ELSE 0 END), 0) count_enabled,
+                     NULLIF(SUM(CASE WHEN E.STATUS = \'DISABLED\' THEN 1 ELSE 0 END), 0) count_disabled,
+                     NULLIF(SUM(CASE WHEN E.STATUS = \'SLAVESIDE_DISABLED\' THEN 1 ELSE 0 END), 0) count_disabled_on_slave
               FROM INFORMATION_SCHEMA.SCHEMATA D
               LEFT JOIN INFORMATION_SCHEMA.EVENTS E ON E.EVENT_SCHEMA = D.SCHEMA_NAME';
       return dibi::fetch($sql);
@@ -116,6 +118,18 @@ class EventModel extends \DbModel
 
 
    /**
+    * Stav pro HTML tag SELECT
+    * @return array Pole pro HTML tag SELECT
+    */              
+   public static function selectStatus()
+   {
+      return array('ENABLED'=>'Zapnutá',
+                   'SLAVESIDE_DISABLED'=>'Vypnutá na podřízeném',
+                   'DISABLED'=>'Vypnutá');
+   }
+
+
+   /**
     * Databáze pro HTML tag SELECT
     * @param string $database Jméno databáze
     * @param string $event Jméno události
@@ -128,7 +142,7 @@ class EventModel extends \DbModel
                      CASE WHEN EVENT_TYPE = \'RECURRING\' THEN TRUE ELSE FALSE END event_type_b,
                      EXECUTE_AT execute_at, 
                      INTERVAL_VALUE interval_value, INTERVAL_FIELD interval_unit,
-                     SQL_MODE, STARTS start, ENDS end, STATUS, ON_COMPLETION on_completion,
+                     SQL_MODE, STARTS start, ENDS end, STATUS status, ON_COMPLETION on_completion,
                      CASE WHEN ON_COMPLETION = \'PRESERVE\' THEN FALSE ELSE TRUE END on_completion_b,
                      CREATED created, LAST_ALTERED altered, LAST_EXECUTED executed,
                      EVENT_COMMENT comment, ORIGINATOR, CHARACTER_SET_CLIENT, COLLATION_CONNECTION, DATABASE_COLLATION

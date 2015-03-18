@@ -46,6 +46,12 @@
             </div>
          </div>
          <div class="form-group">
+            <label class="col-lg-4 control-label">{!=$form['status']->label}</label>
+            <div class="col-lg-8">
+               {!=$form['status']->getControl()->class('form-control')}
+            </div>
+         </div>
+         <div class="form-group">
             <label class="col-lg-4 control-label">{!=$form['repeat']->label}</label>
             <div class="col-lg-8">
                {!=$form['repeat']->getControl()->class('form-control')}

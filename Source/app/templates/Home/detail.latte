@@ -64,6 +64,22 @@
                   </tr>
                   <tr>
                      <th>
+                        Stav
+                     </th>
+                     <td>
+                        {if $detail->status == 'ENABLED'}
+                           <i class="fa fa-square fa-lg fa-fw text-success"></i>&nbsp;&nbsp;Zapnutá
+                        {/if}
+                        {if $detail->status == 'SLAVESIDE_DISABLED'}
+                           <i class="fa fa-square fa-lg fa-fw text-warning"></i>&nbsp;&nbsp;Vypnutá na podřízeném
+                        {/if}
+                        {if $detail->status == 'DISABLED'}
+                           <i class="fa fa-square fa-lg fa-fw text-danger"></i>&nbsp;&nbsp;Vypnutá
+                        {/if}
+                     </td>
+                  </tr>
+                  <tr>
+                     <th>
                         Opakovaná
                      </th>
                      <td>

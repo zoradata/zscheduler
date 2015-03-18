@@ -37,7 +37,8 @@ class EventForm extends \Nette\Object
       $form->addSelect('database_name', 'Databáze', EventModel::selectDatabase())->addRule(Form::FILLED)->setPrompt(' -- Vyberte --');
       $form->addText('name', 'Jméno', NULL, 64)->addRule(Form::FILLED);
       $form->addText('comment', 'Popis', NULL, 200);
-      $form->addSelect('repeat', 'Opakovaně', $this->presenter->getLogical())->addRule(Form::FILLED);
+      $form->addSelect('status', 'Stav', EventModel::selectStatus())->addRule(Form::FILLED);
+      $form->addSelect('repeat', 'Opakovaná', $this->presenter->getLogical())->addRule(Form::FILLED);
       $form->addText('start', 'Začátek', NULL, 20);
       $form->addText('end', 'Konec', NULL, 20);
       $form->addText('interval', 'Interval', NULL, 200);

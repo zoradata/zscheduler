@@ -83,6 +83,16 @@ class HomePresenter extends \LoginPresenter
 
    
    /**
+    * Akce - Zastavení události na podřízeném serveru
+    */
+   public function actionDisableSlave($schema, $name)
+   {
+      dibi::query('ALTER EVENT %sql.%sql DISABLE ON SLAVE', $schema, $name);
+      $this->redirect(':Home:default');
+   }
+
+   
+   /**
     * Akce - Detail události
     */
    public function actionDetail($database, $event)

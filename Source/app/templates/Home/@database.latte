@@ -50,10 +50,13 @@
                      Jméno
                   </th>
                   <th>
-                     <i class="fa fa-square fa-lg fa-fw text-success"></i>
+                     <a href="#" title="Zapnuté"><i class="fa fa-square fa-lg fa-fw text-success"></i></a>
                   </th>
                   <th>
-                     <i class="fa fa-square fa-lg fa-fw text-danger"></i>
+                     <a href="#" title="Vypnuté na podřízeném"><i class="fa fa-square fa-lg fa-fw text-warning"></i></a>
+                  </th>
+                  <th>
+                     <a href="#" title="Vypnuté"><i class="fa fa-square fa-lg fa-fw text-danger"></i></a>
                   </th>
                   <th>
                   </th>
@@ -62,13 +65,16 @@
                   <td>
                      <strong>CELKEM</strong>
                   </td>
-                  <td>
+                  <td class="text-center">
                      <strong class="text-success">{$databaseTotal->count_enabled}</strong>
                   </td>
-                  <td>
+                  <td class="text-center">
+                     <strong class="text-warning">{$databaseTotal->count_disabled_on_slave}</strong>
+                  </td>
+                  <td class="text-center">
                      <strong class="text-danger">{$databaseTotal->count_disabled}</strong>
                   </td>
-                  <td>
+                  <td class="text-center">
                      <a href="{link ':Home:select', NULL}" title="Vybrat"><i class="fa fa-bars fa-lg fa-fw text-primary"></i></a>
                   </td>
                </tr>
@@ -77,13 +83,16 @@
                      <td>
                         {$record->database_name}
                      </td>
-                     <td>
+                     <td class="text-center">
                         <strong class="text-success">{$record->count_enabled}</strong>
                      </td>
-                     <td>
+                     <td class="text-center">
+                        <strong class="text-warning">{$record->count_disabled_on_slave}</strong>
+                     </td>
+                     <td class="text-center">
                         <strong class="text-danger">{$record->count_disabled}</strong>
                      </td>
-                     <td>
+                     <td class="text-center">
                         <a href="{link ':Home:select', $record->database_name}" title="Vybrat"><i class="fa fa-filter fa-lg fa-fw text-primary"></i></a>
                      </td>
                   </tr>
