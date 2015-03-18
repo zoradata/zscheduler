@@ -123,6 +123,7 @@ class HomePresenter extends \LoginPresenter
       catch (Exception $e)
       {
          $button->getForm()->addError($e->getMessage());
+         $button->getForm()->addError($sql);
          return FALSE;        
       }
       $this->redirect(':Home:default');

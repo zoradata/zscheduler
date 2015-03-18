@@ -123,10 +123,13 @@ class EventModel extends \DbModel
     */              
    public static function detail($database, $event)
    {
-      $sql = 'SELECT EVENT_CATALOG, EVENT_SCHEMA database_name, EVENT_NAME name, DEFINER, TIME_ZONE, 
-                     EVENT_BODY sql_command, EVENT_DEFINITION, EVENT_TYPE, EXECUTE_AT, 
+      $sql = 'SELECT EVENT_CATALOG, EVENT_SCHEMA database_name, EVENT_NAME name, DEFINER definer, TIME_ZONE, 
+                     EVENT_BODY body_type, EVENT_DEFINITION sql_command, EVENT_TYPE event_type, 
+                     CASE WHEN EVENT_TYPE = \'RECURRING\' THEN TRUE ELSE FALSE END event_type_b,
+                     EXECUTE_AT execute_at, 
                      INTERVAL_VALUE interval_value, INTERVAL_FIELD interval_unit,
-                     SQL_MODE, STARTS start, ENDS end, STATUS, ON_COMPLETION, 
+                     SQL_MODE, STARTS start, ENDS end, STATUS, ON_COMPLETION on_completion,
+                     CASE WHEN ON_COMPLETION = \'PRESERVE\' THEN FALSE ELSE TRUE END on_completion_b,
                      CREATED created, LAST_ALTERED altered, LAST_EXECUTED executed,
                      EVENT_COMMENT comment, ORIGINATOR, CHARACTER_SET_CLIENT, COLLATION_CONNECTION, DATABASE_COLLATION
               FROM INFORMATION_SCHEMA.EVENTS
