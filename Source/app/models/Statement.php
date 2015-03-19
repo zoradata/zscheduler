@@ -2,7 +2,7 @@
 /**
  * Z-Scheduler
  *
- * Last revison: 18.3.2015
+ * Last revison: 19.3.2015
  * @copyright	Copyright (c) 2014 ZoraData sdružení <http://www.zoradata.cz>
  * 
  * Vytvoření příkazů pro událost
@@ -44,7 +44,7 @@ class Statement extends \Nette\Object
      }
      else
      {
-        $sql .= 'AT ' . $data['start'] . "\n";
+        $sql .= 'AT \'' . $data['start'] . "'\n";
      }
      switch ($data['status'])
      {

@@ -18,22 +18,22 @@
    <div class="col-md-7 col-sm-12">
       <div class="panel panel-primary">
          <div class="panel-heading">
-            <h3 class="panel-title"><i class="fa fa-calendar fa-fw"></i>&nbsp;&nbsp;Detail události</h3>
+            <h3 class="panel-title"><i class="fa fa-calendar fa-fw"></i>&nbsp;&nbsp;{_'Detail události'}</h3>
          </div>
          <div class="panel-body">
             <table class="table table-striped table-hover"> 
                <tbody> 
                   <tr>
                      <th colspan="2" class="text-right">
-                        <a href="{link ':Home:sql', $detail->database_name, $detail->name}" title="Stáhnout SQL příkaz"><i class="fa fa-download fa-lg fa-fw text-primary"></i></a>&nbsp;&nbsp;
-                        <a href="{link ':Home:edit', $detail->database_name, $detail->name}" title="Úprava události"><i class="fa fa-edit fa-lg fa-fw text-primary"></i></a>&nbsp;&nbsp;
-                        <a href="{link ':Home:delete', $detail->database_name, $detail->name}" title="Zrušení události"><i class="fa fa-trash-o fa-lg fa-fw text-primary"></i></a>&nbsp;&nbsp;
-                        <a href="{link ':Home:default'}" title="Zpět"><i class="fa fa-reply fa-lg fa-fw text-primary"></i></a>
+                        <a href="{link ':Home:sql', $detail->database_name, $detail->name}" title="{_'Stáhnout SQL příkaz'}"><i class="fa fa-download fa-lg fa-fw text-primary"></i></a>&nbsp;&nbsp;
+                        <a href="{link ':Home:edit', $detail->database_name, $detail->name}" title="{_'Úprava události'}"><i class="fa fa-edit fa-lg fa-fw text-primary"></i></a>&nbsp;&nbsp;
+                        <a href="{link ':Home:delete', $detail->database_name, $detail->name}" title="{_'Zrušení události'}"><i class="fa fa-trash-o fa-lg fa-fw text-primary"></i></a>&nbsp;&nbsp;
+                        <a href="{link ':Home:default'}" title="{_'Zpět'}"><i class="fa fa-reply fa-lg fa-fw text-primary"></i></a>
                      </th>
                   </tr>
                   <tr>
                      <th style="width: 40%">
-                        Databáze
+                        {_'Databáze'}
                      </th>
                      <td style="width: 60%">
                         <strong>{$detail->database_name}</strong>
@@ -41,7 +41,7 @@
                   </tr>
                   <tr>
                      <th>
-                        Název
+                        {_'Název'}
                      </th>
                      <td>
                         <strong>{$detail->name}</strong>
@@ -49,7 +49,7 @@
                   </tr>
                   <tr>
                      <th>
-                        Vlastník
+                        {_'Vlastník'}
                      </th>
                      <td>
                         {$detail->definer}
@@ -57,7 +57,7 @@
                   </tr>
                   <tr>
                      <th>
-                        Popis
+                        {_'Popis'}
                      </th>
                      <td>
                         {$detail->comment}
@@ -65,31 +65,51 @@
                   </tr>
                   <tr>
                      <th>
-                        Stav
+                        {_'Stav'}
                      </th>
                      <td>
                         {if $detail->status == 'ENABLED'}
-                           <i class="fa fa-square fa-lg fa-fw text-success"></i>&nbsp;&nbsp;Zapnutá
+                           <i class="fa fa-square fa-lg fa-fw text-success"></i>&nbsp;&nbsp;{_'Zapnutá'}
                         {/if}
                         {if $detail->status == 'SLAVESIDE_DISABLED'}
-                           <i class="fa fa-square fa-lg fa-fw text-warning"></i>&nbsp;&nbsp;Vypnutá na podřízeném
+                           <i class="fa fa-square fa-lg fa-fw text-warning"></i>&nbsp;&nbsp;{_'Vypnutá na podřízeném'}
                         {/if}
                         {if $detail->status == 'DISABLED'}
-                           <i class="fa fa-square fa-lg fa-fw text-danger"></i>&nbsp;&nbsp;Vypnutá
+                           <i class="fa fa-square fa-lg fa-fw text-danger"></i>&nbsp;&nbsp;{_'Vypnutá'}
                         {/if}
                      </td>
                   </tr>
                   <tr>
                      <th>
-                        Opakovaná
+                        {_'Typ'}
                      </th>
                      <td>
-                        {$detail->event_type_b|boolean}
+                        {if $detail->event_type_b}
+                           <i class="fa fa-history fa-lg fa-fw"></i>&nbsp;&nbsp;{_'Opakovaná'}
+                        {else}
+                           <i class="fa fa-bolt fa-lg fa-fw"></i>&nbsp;&nbsp;{_'Jednorázová'}
+                        {/if}
                      </td>
                   </tr>
+                  {if $detail->event_type_b}
+                     <tr>
+                        <th>
+                           {_'Spouštět každých'}
+                        </th>
+                        <td>
+                           {if $detail->interval_value != NULL}
+                              {$detail->interval_value} / {$detail->interval_unit}
+                           {/if}
+                        </td>
+                     </tr>
+                  {/if}
                   <tr>
                      <th>
-                        Začátek
+                        {if $detail->event_type_b}
+                           {_'Začátek'}
+                        {else}
+                           {_'Spustit v'}
+                        {/if}
                      </th>
                      <td>
                         {if $detail->event_type_b}
@@ -99,27 +119,19 @@
                         {/if}
                      </td>
                   </tr>
+                  {if $detail->event_type_b}
+                     <tr>
+                        <th>
+                           {_'Konec'}
+                        </th>
+                        <td>
+                           {$detail->end}
+                        </td>
+                     </tr>
+                  {/if}
                   <tr>
                      <th>
-                        Konec
-                     </th>
-                     <td>
-                        {$detail->end}
-                     </td>
-                  </tr>
-                  <tr>
-                     <th>
-                        Interval / Jednotka
-                     </th>
-                     <td>
-                        {if $detail->interval_value != NULL}
-                           {$detail->interval_value} / {$detail->interval_unit}
-                        {/if}
-                     </td>
-                  </tr>
-                  <tr>
-                     <th>
-                        Smazat po ukončení
+                        {_'Smazat po ukončení'}
                      </th>
                      <td>
                         {$detail->on_completion_b|boolean}
@@ -127,7 +139,7 @@
                   </tr>
                   <tr>
                      <th>
-                        SQL příkaz
+                        {_'SQL příkaz'}
                      </th>
                      <td>
                         {$detail->sql_command}
@@ -135,7 +147,7 @@
                   </tr>
                   <tr>
                      <th>
-                        Vytvořena
+                        {_'Vytvořena'}
                      </th>
                      <td>
                         {$detail->created}
@@ -143,7 +155,7 @@
                   </tr>
                   <tr>
                      <th>
-                        Poslední změna
+                        {_'Poslední změna'}
                      </th>
                      <td>
                         {$detail->altered}
@@ -151,7 +163,7 @@
                   </tr>
                   <tr>
                      <th>
-                        Poslední běh
+                        {_'Poslední běh'}
                      </th>
                      <td>
                         {$detail->executed}
