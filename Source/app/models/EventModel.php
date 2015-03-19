@@ -116,6 +116,17 @@ class EventModel extends \DbModel
                    'YEAR_MONTH'=>'Rok:Měsíc');
    }
 
+   
+   /**
+    * Typ události pro HTML tag SELECT
+    * @return array Pole pro HTML tag SELECT
+    */              
+   public static function selectType()
+   {
+      return array(1=>'Opakovaná',
+                   0=>'Jednorázová');
+   }
+
 
    /**
     * Stav pro HTML tag SELECT
