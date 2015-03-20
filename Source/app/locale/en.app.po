@@ -1,0 +1,275 @@
+# Gettext keys exported by GettextTranslator and Translation Panel
+# Created: 2015-03-20 11:15:08
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2015-03-20 11:15+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4 ? 1 : 2));\n"
+
+
+msgid " -- Vyberte --"
+msgstr "-- Select --"
+
+msgid "Ano"
+msgstr "Yes"
+
+msgid "CELKEM"
+msgstr "TOTAL"
+
+msgid "Databáze"
+msgstr "Database"
+
+msgid "Den"
+msgstr "Day"
+
+msgid "Den:Hodina"
+msgstr "Day:Hour"
+
+msgid "Den:Minuta"
+msgstr "Day:Minute"
+
+msgid "Den:Vteřina"
+msgstr "Day:Second"
+
+msgid "Detail"
+msgstr "Detail"
+
+msgid "Detail události"
+msgstr "Event detail"
+
+msgid "Heslo"
+msgstr "Password"
+
+msgid "Hodina"
+msgstr "Hour"
+
+msgid "Hodina:Minuta"
+msgstr "Hout:Minute"
+
+msgid "Hodina:Vteřina"
+msgstr "Hour:Second"
+
+msgid "Jednorázová"
+msgstr "Disponable"
+
+msgid "Jméno"
+msgstr "Name"
+
+msgid "Konec"
+msgstr "End"
+
+msgid "Minuta"
+msgstr "Minute"
+
+msgid "Minuta:Vteřina"
+msgstr "Minute:Second"
+
+msgid "Měsíc"
+msgstr "Month"
+
+msgid "Ne"
+msgstr "No"
+
+msgid "Nová událost"
+msgstr "New event"
+
+msgid "Název"
+msgstr "Name"
+
+msgid "Opakovaná"
+msgstr "Repeated"
+
+msgid "Plánovač událostí"
+msgstr "Scheduler"
+
+msgid "Pole %label musí být vyplněno."
+msgstr "%label field must be filled."
+
+msgid "Pole %label musí mít tvar RRRR-MM-DD HH:MI:SS"
+msgstr "%label field must have the form YYYY-MM-DD HH: MI: SS"
+
+msgid "Popis"
+msgstr "Comment"
+
+msgid "Poslední běh"
+msgstr "last run"
+
+msgid "Poslední změna"
+msgstr "Last changed"
+
+msgid "Přihlásit"
+msgstr "Login"
+
+msgid "Rok"
+msgstr "Year"
+
+msgid "Rok:Měsíc"
+msgstr "Year:Month"
+
+msgid "SQL příkaz"
+msgstr "SQL command"
+
+msgid "Server"
+msgstr "Server"
+
+msgid "Smazat po ukončení"
+msgstr "Delete after completion"
+
+msgid "Spouštět každých"
+msgstr "Run every"
+
+msgid "Spustit"
+msgstr "Enable"
+
+msgid "Spustit každých"
+msgstr "Run every"
+
+msgid "Stav"
+msgstr "Status"
+
+msgid "Stáhnout SQL příkaz"
+msgstr "Download SQL command"
+
+msgid "Typ"
+msgstr "Type"
+
+msgid "Týden"
+msgstr "Week"
+
+msgid "Událost"
+msgstr "Event"
+
+msgid "Události"
+msgstr "Events"
+
+msgid "Uživatel"
+msgstr "User"
+
+msgid "VYPNUTO"
+msgstr "OFF"
+
+msgid "Vlastník"
+msgstr "Owner"
+
+msgid "Vteřina"
+msgstr "Second"
+
+msgid "Vybrat"
+msgstr "Select"
+
+msgid "Vypnout"
+msgstr "Switch off"
+
+msgid "Vypnutá"
+msgstr "Disabled"
+
+msgid "Vypnutá na podřízeném"
+msgstr "Disabled on slave"
+
+msgid "Vypnuté"
+msgstr "Disabled"
+
+msgid "Vypnuté na podřízeném"
+msgstr "Disabled on slave"
+
+msgid "Vytvořena"
+msgstr "Created at"
+
+msgid "Vytvořit"
+msgstr "Create"
+
+msgid "ZAPNUTO"
+msgstr "ON"
+
+msgid "Zapnout"
+msgstr "Switch on"
+
+msgid "Zapnutá"
+msgstr "Enabled"
+
+msgid "Zapnuté"
+msgstr "Enabled"
+
+msgid "Zastavit"
+msgstr "Disable"
+
+msgid "Zastavit na podřízeném"
+msgstr "Disable on slave"
+
+msgid "Začátek"
+msgstr "Start"
+
+msgid "Změna události"
+msgstr "Edit event"
+
+msgid "Zpět"
+msgstr "Back"
+
+msgid "Zrušení události"
+msgstr "Delete event"
+
+msgid "Úprava události"
+msgstr "Edit event"
+
+msgid "Čtvrtletí"
+msgstr "Quarter"
+
+msgid "Zrušit"
+msgstr "Delete"
+
+msgid "cdcol"
+msgstr ""
+
+msgid "common_schema"
+msgstr ""
+
+msgid "cportal"
+msgstr ""
+
+msgid "dol"
+msgstr ""
+
+msgid "fakturace"
+msgstr ""
+
+msgid "idluhapi"
+msgstr ""
+
+msgid "information_schema"
+msgstr ""
+
+msgid "kproject"
+msgstr ""
+
+msgid "mysql"
+msgstr ""
+
+msgid "performance_schema"
+msgstr ""
+
+msgid "phpmyadmin"
+msgstr ""
+
+msgid "test"
+msgstr ""
+
+msgid "webauth"
+msgstr ""
+
+msgid "webreminder"
+msgstr ""
+
+msgid "zcms"
+msgstr ""
+
+msgid "zdcube"
+msgstr ""
+
+msgid "zpolish"
+msgstr ""
+
+msgid "zsklad"
+msgstr ""
+

@@ -52,8 +52,8 @@ abstract class LoginPresenter extends BasePresenter
       if (!$this->getUser()->isLoggedIn())                                                                                        // Je přihlášen uživatel?
          $this->forward(':Sign:default');                                                                                         // Ne - Skok na přihlášení
       dibi::connect($this->getUser()->getIdentity()->getData());                                                                  // Ano - Přihlásit do DB
-      $this->pageDb = new VisualPaginator($this, 'pageDb', 10);                                                                       // Vytvoření instance stránkovače výpisu databází
-      $this->pageEvent = new VisualPaginator($this, 'pageEvent', 10);                                                                 // Vytvoření instance stránkovače výpisu událostí
+      $this->pageDb = new VisualPaginator($this, 'pageDb', $this->param['pageDatabase']);                                         // Vytvoření instance stránkovače výpisu databází
+      $this->pageEvent = new VisualPaginator($this, 'pageEvent', $this->param['pageEvent']);                                      // Vytvoření instance stránkovače výpisu událostí
    }
    
 

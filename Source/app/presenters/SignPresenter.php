@@ -29,6 +29,7 @@ class SignPresenter extends BasePresenter
     /*  if (ActualUser::get()->getLogoutReason() === NUser::INACTIVITY)
          $this->message = 'Uživatel byl odhlášen z důvodů neaktivity.';*/
       $form = new Form($this, 'login');
+      $form->setTranslator($this->translator);
       $form->getElementPrototype()->class('form-horizontal');
       $form->addText('host', 'Server', NULL, 255)->addRule(Form::FILLED)->setDefaultValue('localhost');
       $form->addText('user', 'Uživatel', NULL, 255);
