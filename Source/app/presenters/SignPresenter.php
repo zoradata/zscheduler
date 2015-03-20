@@ -3,7 +3,7 @@
  * Z-Scheduler
  *
  * Last revison: 12.3.2015
- * @copyright	Copyright (c) 2014 ZoraData sdružení <http://www.zoradata.cz>
+ * @copyright	Copyright (c) 2014 ZoraData sdružení <http://www.zoradata.cz> Jaroslav Šourek
  * 
  * Presenter pro přihlášení a odhlášení uživatele
  */
@@ -12,7 +12,7 @@
 use \Nette\Application\UI\Form;
 
 
-class SignPresenter extends \BasePresenter
+class SignPresenter extends BasePresenter
 {
    
    protected function startup()

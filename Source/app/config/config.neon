@@ -9,6 +9,7 @@ common:
   delimiter: '$$'
   pageDatabase: 14                                                              # Počet záznamu ns stránku ve výpisu databází
   pageEvent: 16                                                                 # Počet záznamu ns stránku ve výpisu událostí
+  language: cs                                                                  # jayzk aplikace (cs, en, sk)
 
  php:
   date.timezone: Europe/Prague

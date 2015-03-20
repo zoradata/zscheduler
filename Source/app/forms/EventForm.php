@@ -3,7 +3,7 @@
  * Z-Scheduler
  *
  * Last revison: 18.3.2015
- * @copyright	Copyright (c) 2014 ZoraData sdružení <http://www.zoradata.cz>
+ * @copyright	Copyright (c) 2014 ZoraData sdružení <http://www.zoradata.cz> Jaroslav Šourek
  * 
  * Formuláře událostí
  */
@@ -33,6 +33,7 @@ class EventForm extends \Nette\Object
    public function manage($defaults, $callback)
    {
       $form = new Form($this->presenter, 'event');
+      $form->setTranslator($this->presenter->translator);
       $form->getElementPrototype()->class('form-horizontal');
       $form->addSelect('database_name', 'Databáze', EventModel::selectDatabase())->addRule(Form::FILLED)->setPrompt(' -- Vyberte --');
       $form->addText('name', 'Jméno', NULL, 64)->addRule(Form::FILLED);
@@ -64,6 +65,7 @@ class EventForm extends \Nette\Object
    public function delete($callback)
    {
       $form = new Form($this->presenter, 'event');
+      $form->setTranslator($this->presenter->translator);
       $form->getElementPrototype()->class('form-horizontal');
       $form->addSubmit('save', 'Zrušit')->onClick[] = array($this->presenter, $callback);
       return $form;

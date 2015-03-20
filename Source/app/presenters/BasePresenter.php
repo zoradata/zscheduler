@@ -3,7 +3,7 @@
  * Z-Scheduler
  *
  * Last revison: 12.3.2015
- * @copyright	Copyright (c) 2014 ZoraData sdružení <http://www.zoradata.cz>
+ * @copyright	Copyright (c) 2014 ZoraData sdružení <http://www.zoradata.cz> Jaroslav Šourek
  * 
  * Základní presenter
  */
@@ -19,7 +19,7 @@ abstract class BasePresenter extends \Nette\Application\UI\Presenter
    public $httpResponse;
 
    /** @var translator Instance translatoru */
-   protected $translator;   
+   public $translator;   
 
    
    protected function startup()

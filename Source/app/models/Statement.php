@@ -2,8 +2,8 @@
 /**
  * Z-Scheduler
  *
- * Last revison: 19.3.2015
- * @copyright	Copyright (c) 2014 ZoraData sdružení <http://www.zoradata.cz>
+ * Last revison: 20.3.2015
+ * @copyright	Copyright (c) 2014 ZoraData sdružení <http://www.zoradata.cz> Jaroslav Šourek
  * 
  * Vytvoření příkazů pro událost
  */
@@ -45,6 +45,14 @@ class Statement extends \Nette\Object
      else
      {
         $sql .= 'AT \'' . $data['start'] . "'\n";
+     }
+     if ($data['preserve'])
+     {
+        $sql .= 'ON COMPLETION NOT PRESERVE' . "\n";
+     }
+     else
+     {
+        $sql .= 'ON COMPLETION PRESERVE' . "\n";
      }
      switch ($data['status'])
      {

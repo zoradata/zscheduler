@@ -3,13 +3,13 @@
  * Z-Scheduler
  *
  * Last revison: 18.3.2015
- * @copyright	Copyright (c) 2014 ZoraData sdružení <http://www.zoradata.cz>
+ * @copyright	Copyright (c) 2014 ZoraData sdružení <http://www.zoradata.cz> Jaroslav Šourek
  * 
  * Presenter pro správu událostí
  */
 
 
-class HomePresenter extends \LoginPresenter
+class HomePresenter extends LoginPresenter
 {
 
    /**
@@ -113,6 +113,7 @@ class HomePresenter extends \LoginPresenter
          $defaults['database_name'] = $this->db;
       $eventForm = new EventForm($this);
       $this->template->form = $eventForm->manage($defaults, 'submitNew');
+      $this->template->formTitle = 'Nová událost';
    }
 
    
@@ -124,10 +125,8 @@ class HomePresenter extends \LoginPresenter
    {
       $data = $button->getForm()->getValues();
       $sql = Statement::create($data);
-      // echo '<br><br>xxx: ' . $sql;
       try
       {
-         //dibi::query('DELIMITER $$');
          dibi::query($sql);
       }
       catch (Exception $e)
@@ -149,6 +148,7 @@ class HomePresenter extends \LoginPresenter
       $defaults = EventModel::detail($database, $event);
       $eventForm = new EventForm($this);
       $this->template->form = $eventForm->manage($defaults, 'submitEdit');
+      $this->template->formTitle = 'Změna události';
    }
 
    
