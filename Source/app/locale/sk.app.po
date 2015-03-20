@@ -1,0 +1,213 @@
+# Gettext keys exported by GettextTranslator and Translation Panel
+# Created: 2015-03-20 14:20:07
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2015-03-20 14:20+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=((n==1) ? 0 : (n>=2 && n<=4 ? 1 : 2));\n"
+
+
+msgid " -- Vyberte --"
+msgstr "-- Vyberte --"
+
+msgid "Ano"
+msgstr "Áno"
+
+msgid "CELKEM"
+msgstr "CELKOM"
+
+msgid "Databáze"
+msgstr "Databázy"
+
+msgid "Den"
+msgstr "Deň"
+
+msgid "Den:Hodina"
+msgstr "Deň:Hodina"
+
+msgid "Den:Minuta"
+msgstr "Deň:Minúta"
+
+msgid "Den:Vteřina"
+msgstr "Deň:Sekunda"
+
+msgid "Detail"
+msgstr "Detail"
+
+msgid "Detail události"
+msgstr "Detail udalosti"
+
+msgid "Heslo"
+msgstr "Heslo"
+
+msgid "Hodina"
+msgstr "Hodina"
+
+msgid "Hodina:Minuta"
+msgstr "Hodina:minúta"
+
+msgid "Hodina:Vteřina"
+msgstr "Hodina:Sekunda"
+
+msgid "Jednorázová"
+msgstr "Jednorazová"
+
+msgid "Jméno"
+msgstr "Meno"
+
+msgid "Konec"
+msgstr "Koniec"
+
+msgid "Minuta"
+msgstr "Minúta"
+
+msgid "Minuta:Vteřina"
+msgstr "Minúta:Sekunda"
+
+msgid "Měsíc"
+msgstr "Mesiac"
+
+msgid "Ne"
+msgstr "Nie"
+
+msgid "Nová událost"
+msgstr "Nová udalosť"
+
+msgid "Název"
+msgstr "Názov"
+
+msgid "Opakovaná"
+msgstr "Opakovaná"
+
+msgid "Plánovač událostí"
+msgstr "Plánovač udalostí"
+
+msgid "Pole %label musí být vyplněno."
+msgstr "Poľa %label musí byť vyplnené."
+
+msgid "Pole %label musí mít tvar RRRR-MM-DD HH:MI:SS"
+msgstr "Poľa %label musí mať tvar RRRR-MM-DD HH:MI:SS"
+
+msgid "Popis"
+msgstr "Popis"
+
+msgid "Poslední běh"
+msgstr "Posledný beh"
+
+msgid "Poslední změna"
+msgstr "Posledná zmena"
+
+msgid "Přihlásit"
+msgstr "Prihlásiť"
+
+msgid "Rok"
+msgstr "Rok"
+
+msgid "Rok:Měsíc"
+msgstr "Rok:Mesiac"
+
+msgid "SQL příkaz"
+msgstr[0] "SQL príkaz"
+msgstr[1] "v"
+
+msgid "Server"
+msgstr "Server"
+
+msgid "Smazat po ukončení"
+msgstr "Zmazať po ukončení"
+
+msgid "Spouštět každých"
+msgstr "Spúšťať každých"
+
+msgid "Spustit"
+msgstr "Spustiť"
+
+msgid "Spustit každých"
+msgstr "Spustiť každých"
+
+msgid "Stav"
+msgstr "Stav"
+
+msgid "Stáhnout SQL příkaz"
+msgstr "Stiahnuť SQL príkaz"
+
+msgid "Typ"
+msgstr "Typ"
+
+msgid "Týden"
+msgstr "Týždeň"
+
+msgid "Událost"
+msgstr "Udalosť"
+
+msgid "Události"
+msgstr "Udalosti"
+
+msgid "Uživatel"
+msgstr "Užívateľ"
+
+msgid "Vlastník"
+msgstr "Vlastník"
+
+msgid "Vteřina"
+msgstr "Sekunda"
+
+msgid "Vybrat"
+msgstr "Vybrať"
+
+msgid "Vypnout"
+msgstr "Vypnúť"
+
+msgid "Vypnutá"
+msgstr "vypnutá"
+
+msgid "Vypnutá na podřízeném"
+msgstr "Vypnutá na podriadenom"
+
+msgid "Vypnuté"
+msgstr "Vypnuté"
+
+msgid "Vypnuté na podřízeném"
+msgstr "Vypnuté na podriadenom"
+
+msgid "Vytvořena"
+msgstr "Vytvorená"
+
+msgid "Vytvořit"
+msgstr "Vytvoriť"
+
+msgid "ZAPNUTO"
+msgstr "ZAPNUTÉ"
+
+msgid "Zapnutá"
+msgstr "Zapnutá"
+
+msgid "Zapnuté"
+msgstr "Zapnuté"
+
+msgid "Zastavit"
+msgstr "Zastaviť"
+
+msgid "Zastavit na podřízeném"
+msgstr "Zastaviť na podriadenom"
+
+msgid "Začátek"
+msgstr "Začiatok"
+
+msgid "Zpět"
+msgstr "Späť"
+
+msgid "Zrušení události"
+msgstr "Zrušenie udalosti"
+
+msgid "Úprava události"
+msgstr "Úprava udalosti"
+
+msgid "Čtvrtletí"
+msgstr "Štvrťrok"
+
+msgid "Zrušit"
+msgstr "Zrušiť"
+

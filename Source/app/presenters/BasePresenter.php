@@ -31,7 +31,7 @@ abstract class BasePresenter extends \Nette\Application\UI\Presenter
       
       $this->param = $this->context->getParameters();                                                                             // Načtení parametrů  
       $this->httpResponse = $this->context->getByType('Nette\Http\Response');                                                     // Načtení HTTP odpovědi
-      $this->translator->lang = 'cs';      
+      $this->translator->lang = $this->param['language'];      
    }
 
    
