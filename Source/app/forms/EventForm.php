@@ -49,10 +49,10 @@ class EventForm extends \Nette\Object
       $form->addText('end', 'Konec', NULL, 20)
            ->addCondition(Form::FILLED)
            ->addRule(Form::PATTERN, 'Pole %label musí mít tvar RRRR-MM-DD HH:MI:SS', '([1-3][0-9]{3,3})-(0?[1-9]|1[0-2])-(0?[1-9]|[1-2][1-9]|3[0-1])\s([0-1][0-9]|2[0-4]):([0-5][0-9]):([0-5][0-9])');
-      $form->addText('interval', 'Spustit každých', NULL, 200)->addRule(Form::FILLED)->addCondition(Form::INTEGER);
+      $form->addText('interval_value', 'Spustit každých', NULL, 200)->addRule(Form::FILLED)->addCondition(Form::INTEGER);
       $form->addSelect('unit', 'Jednotka', EventModel::selectUnit())->addRule(Form::FILLED)->setPrompt(' -- Vyberte --');
       $form->addSelect('preserve', 'Smazat po ukončení', $this->presenter->getLogical())->addRule(Form::FILLED);
-      $form->addTextArea('sql', 'SQL příkaz', NULL, NULL)->addRule(Form::FILLED);
+      $form->addTextArea('sql_command', 'SQL příkaz', NULL, NULL)->addRule(Form::FILLED);
       $form->addSubmit('save', 'Vytvořit')->onClick[] = array($this->presenter, $callback);
       if (!$form->isSubmitted())
          $form->setDefaults($defaults);

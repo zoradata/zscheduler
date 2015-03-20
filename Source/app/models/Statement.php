@@ -36,11 +36,11 @@ class Statement extends \Nette\Object
      $sql .= 'ON SCHEDULE ';
      if ($data['repeat'])
      {
-        $sql .= 'EVERY ' . $data['interval'] . ' ' . $data['unit'] . "\n";
+        $sql .= 'EVERY ' . $data['interval_value'] . ' ' . $data['unit'] . "\n";
         if ($data['start'] != NULL)
            $sql .= 'STARTS \'' . $data['start'] . "'\n";
         if ($data['end'] != NULL)
-           $sql .= 'ENDS \'' . $data['start'] . "'\n";
+           $sql .= 'ENDS \'' . $data['end'] . "'\n";
      }
      else
      {
@@ -60,16 +60,16 @@ class Statement extends \Nette\Object
            $sql .= 'ENABLE' . "\n";
            break;
         case 'SLAVESIDE_DISABLED':
-           $sql .= 'DISABLE ON SLAVE' . "'\n";
+           $sql .= 'DISABLE ON SLAVE' . "\n";
            break;
         case 'DISABLED':
-           $sql .= 'DISABLE' . "'\n";
+           $sql .= 'DISABLE' . "\n";
            break;
         default:
      }
      if ($data['comment'] != NULL)
         $sql .= 'COMMENT \'' . $data['comment'] . "'\n";
-     $sql .= 'DO ' . $data['sql'] . "\n";
+     $sql .= 'DO ' . $data['sql_command'] . "\n";
      return $sql;
    }
    

@@ -40,6 +40,11 @@
          {if $presenter->getUser()->isLoggedIn()}
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                <ul class="nav navbar-nav navbar-right">
+                  {if $presenter->db != NULL}
+                     <li>
+                        <a class="navbar-brand" href="#"><i class="fa fa-database fa-lg fa-fw"></i> {$presenter->db}</a>
+                     </li>
+                  {/if}
                   <li>
                      <a class="navbar-brand" href="{link ':Sign:logout'}"><i class="fa fa-user fa-lg fa-fw"></i> {$presenter->getUser()->id}</a>
                   </li>
