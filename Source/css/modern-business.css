@@ -132,3 +132,8 @@ footer {
 a.pagination {
     text-decoration: none;
 }
+
+.required:after {
+    content: " *";
+    font-weight: bold;
+}

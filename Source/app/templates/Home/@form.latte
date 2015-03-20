@@ -28,13 +28,13 @@
             </div>
          {/if}
          <div class="form-group">
-            <label class="col-lg-4 control-label">{!=$form['database_name']->label} *</label>
+            <label class="col-lg-4 control-label">{!=$form['database_name']->label}</label>
             <div class="col-lg-8">
                {!=$form['database_name']->getControl()->class('form-control')}
             </div>
          </div>
          <div class="form-group">
-            <label class="col-lg-4 control-label">{!=$form['name']->label} *</label>
+            <label class="col-lg-4 control-label">{!=$form['name']->label}</label>
             <div class="col-lg-8">
                {!=$form['name']->getControl()->class('form-control')}
             </div>
@@ -68,7 +68,13 @@
                </div>
             </div>
          </div>
-         <div class="form-group">
+         <div class="form-group form-div-run_at">
+            <label class="col-lg-4 control-label">{!=$form['run_at']->label}</label>
+            <div class="col-lg-8">
+               {!=$form['run_at']->getControl()->class('form-control')}
+            </div>
+         </div>
+         <div class="form-group form-div-start">
             <label class="col-lg-4 control-label">{!=$form['start']->label}</label>
             <div class="col-lg-8">
                {!=$form['start']->getControl()->class('form-control')}
@@ -81,13 +87,13 @@
             </div>
          </div>
          <div class="form-group">
-            <label class="col-lg-4 control-label">{!=$form['preserve']->label} *</label>
+            <label class="col-lg-4 control-label">{!=$form['preserve']->label}</label>
             <div class="col-lg-8">
                {!=$form['preserve']->getControl()->class('form-control')}
             </div>
          </div>
          <div class="form-group">
-            <label class="col-lg-4 control-label">{!=$form['sql']->label} *</label>
+            <label class="col-lg-4 control-label">{!=$form['sql']->label}</label>
             <div class="col-lg-8">
                {!=$form['sql']->getControl()->class('form-control')}
             </div>
@@ -102,25 +108,12 @@
 </div>
 
 <script>
+   $(document).ready(function() {   
+      set();
+   });    
+</script> 
+<script>
    $("#frm-event-repeat").change(function() {
-      if ($("#frm-event-repeat").val() == "0")
-      {   
-         $("#frm-event-end").val("");
-         $("#frm-event-end").prop("disabled", true);
-         $("#frm-event-interval").val("");
-         $("#frm-event-interval").prop("disabled", true);
-         $("#frm-event-unit").val("");
-         $("#frm-event-unit").prop("disabled", true);
-         $(".form-div-interval").hide();
-         $(".form-div-end").hide();
-      }
-      else
-      {   
-         $("#frm-event-end").prop("disabled", false);
-         $("#frm-event-interval").prop("disabled", false);
-         $("#frm-event-unit").prop("disabled", false);
-         $(".form-div-interval").show();
-         $(".form-div-end").show();
-      }
+      set();
    });    
 </script> 

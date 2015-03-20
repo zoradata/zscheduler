@@ -109,8 +109,7 @@ msgid "Rok:Měsíc"
 msgstr "Rok:Mesiac"
 
 msgid "SQL příkaz"
-msgstr[0] "SQL príkaz"
-msgstr[1] "v"
+msgstr "SQL príkaz"
 
 msgid "Server"
 msgstr "Server"
