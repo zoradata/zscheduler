@@ -1,15 +1,16 @@
 #
 # Z-Scheduler
 #
+# @copyright	Copyright (c) 2014 ZoraData sdružení <http://www.zoradata.cz> Jaroslav Šourek
+#
 # Konfigurace prostředí
 #
 
 common:
  parameters:
-  delimiter: '$$'
   pageDatabase: 12                                                              # Počet záznamu ns stránku ve výpisu databází
   pageEvent: 15                                                                 # Počet záznamu ns stránku ve výpisu událostí
-  language: cs                                                                  # jayzk aplikace (cs, en, sk)
+  language: cs                                                                  # Jayzk aplikace (cs, en, sk)
 
  php:
   date.timezone: Europe/Prague

@@ -1,17 +1,11 @@
 <?php
-
 /**
- * Nette Framework Extras
+ * Z-Scheduler
  *
- * This source file is subject to the New BSD License.
- *
- * For more information please see http://extras.nettephp.com
- *
- * @copyright  Copyright (c) 2009 David Grudl
- * @license    New BSD License
- * @link       http://extras.nettephp.com
- * @package    Nette Extras
- * @version    $Id: VisualPaginator.php 4 2009-07-14 15:22:02Z david@grudl.com $
+ * Last revison: 12.3.2015
+ * @copyright	Copyright (c) 2014 ZoraData sdružení <http://www.zoradata.cz> Jaroslav Šourek
+ * 
+ * Stránkovač
  */
 
  
@@ -19,14 +13,6 @@ use Nette\Application\UI\Control;
 use Nette\Utils\Paginator;
 
 
-
-/**
- * Visual paginator control.
- *
- * @author     David Grudl
- * @copyright  Copyright (c) 2009 David Grudl
- * @package    Nette Extras
- */
 class VisualPaginator extends Control
 {
    /** @var Paginator */
