@@ -6,9 +6,6 @@
  * @copyright	Copyright (c) 2014 ZoraData sdružení <http://www.zoradata.cz> Jaroslav Šourek
  */
  
-namespace BaseModule;
-
-
 
 class Helpers extends \Nette\Object
 {

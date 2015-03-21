@@ -8,8 +8,6 @@
  * Knihovní třída pro podporu stahování
  */
 
-namespace BaseModule;
-
  
 class Download extends \Nette\Object
 {

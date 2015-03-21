@@ -2,7 +2,7 @@
 /**
  * Z-Scheduler
  *
- * Last revison: 20.3.2015
+ * Last revison: 21.3.2015
  * @copyright	Copyright (c) 2014 ZoraData sdružení <http://www.zoradata.cz> Jaroslav Šourek
  * 
  * Vytvoření příkazů pro událost
@@ -32,44 +32,46 @@ class Statement extends \Nette\Object
    
    private static function statement($command, $data)
    {
-     $sql = $command . $data['database_name'] . '.' . $data['name'] . "\n";
+     $sql = $command . $data['database_name'] . '.' . $data['name'] . "\r\n";
      $sql .= 'ON SCHEDULE ';
-     if ($data['repeat'])
+     if ($data['repeated'])
      {
-        $sql .= 'EVERY ' . $data['interval_value'] . ' ' . $data['unit'] . "\n";
+        $sql .= 'EVERY ' . $data['interval_value'] . ' ' . $data['unit'] . "\r\n";
         if ($data['start'] != NULL)
-           $sql .= 'STARTS \'' . $data['start'] . "'\n";
+           $sql .= 'STARTS \'' . $data['start'] . "'\r\n";
         if ($data['end'] != NULL)
-           $sql .= 'ENDS \'' . $data['end'] . "'\n";
+           $sql .= 'ENDS \'' . $data['end'] . "'\r\n";
      }
      else
      {
-        $sql .= 'AT \'' . $data['start'] . "'\n";
+        if ($data['run_at'] != NULL)
+           $sql .= 'AT \'' . $data['run_at'] . "'\r\n";
+        else $sql .= 'AT now()' . "\r\n";
      }
      if ($data['preserve'])
      {
-        $sql .= 'ON COMPLETION NOT PRESERVE' . "\n";
+        $sql .= 'ON COMPLETION NOT PRESERVE' . "\r\n";
      }
      else
      {
-        $sql .= 'ON COMPLETION PRESERVE' . "\n";
+        $sql .= 'ON COMPLETION PRESERVE' . "\r\n";
      }
      switch ($data['status'])
      {
         case 'ENABLED':
-           $sql .= 'ENABLE' . "\n";
+           $sql .= 'ENABLE' . "\r\n";
            break;
         case 'SLAVESIDE_DISABLED':
-           $sql .= 'DISABLE ON SLAVE' . "\n";
+           $sql .= 'DISABLE ON SLAVE' . "\r\n";
            break;
         case 'DISABLED':
-           $sql .= 'DISABLE' . "\n";
+           $sql .= 'DISABLE' . "\r\n";
            break;
         default:
      }
      if ($data['comment'] != NULL)
-        $sql .= 'COMMENT \'' . $data['comment'] . "'\n";
-     $sql .= 'DO ' . $data['sql_command'] . "\n";
+        $sql .= 'COMMENT \'' . $data['comment'] . "'\r\n";
+     $sql .= 'DO ' . $data['sql_command'] . "\r\n";
      return $sql;
    }
    

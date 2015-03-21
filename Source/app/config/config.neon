@@ -10,7 +10,7 @@ common:
  parameters:
   pageDatabase: 12                                                              # Počet záznamu ns stránku ve výpisu databází
   pageEvent: 15                                                                 # Počet záznamu ns stránku ve výpisu událostí
-  language: cs                                                                  # Jayzk aplikace (cs, en, sk)
+  language: sk                                                                  # Jayzk aplikace (cs, en, sk)
 
  php:
   date.timezone: Europe/Prague

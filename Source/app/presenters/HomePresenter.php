@@ -2,7 +2,7 @@
 /**
  * Z-Scheduler
  *
- * Last revison: 18.3.2015
+ * Last revison: 21.3.2015
  * @copyright	Copyright (c) 2014 ZoraData sdružení <http://www.zoradata.cz> Jaroslav Šourek
  * 
  * Presenter pro správu událostí
@@ -167,6 +167,7 @@ class HomePresenter extends LoginPresenter
       catch (Exception $e)
       {
          $button->getForm()->addError($e->getMessage());
+         $button->getForm()->addError($sql);
          return FALSE;        
       }
       $this->redirect(':Home:default');
@@ -216,6 +217,17 @@ class HomePresenter extends LoginPresenter
       $paginatorDb = $this->pageDb->getPaginator();
       $this->template->databases = EventModel::database($paginatorDb->itemsPerPage, $paginatorDb->offset);
       $paginatorDb->itemCount = EventModel::countRows();
+   }
+
+   
+   /**
+    * Akce - Stažení SQL
+    */
+   public function actionSql($database, $event)
+   {
+      $data = EventModel::detail($database, $event);
+      $sql = Statement::alter($data);
+      Download::string($this->httpResponse, 'plain/text', $sql, 'create.sql');
    }
    
 }

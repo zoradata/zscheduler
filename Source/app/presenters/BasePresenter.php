@@ -87,9 +87,9 @@ abstract class BasePresenter extends \Nette\Application\UI\Presenter
    protected function createTemplate($class = NULL)
    {
       $template = parent::createTemplate($class);
-      $template->registerHelper('boolean', '\BaseModule\Helpers::boolean');                                                       // Přidání helprů do šablony
-      $template->registerHelper('znumber', '\ComModule\Helpers::number');             
-      $template->registerHelper('zcurrency', '\ComModule\Helpers::currency');    
+      $template->registerHelper('boolean', 'Helpers::boolean');                                                       // Přidání helprů do šablony
+      $template->registerHelper('znumber', 'Helpers::number');             
+      $template->registerHelper('zcurrency', 'Helpers::currency');    
       $template->setTranslator($this->translator);                                                                                // Přidání translatoru do šabloby
       return $template;
    }

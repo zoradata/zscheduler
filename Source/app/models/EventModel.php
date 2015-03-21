@@ -150,10 +150,13 @@ class EventModel extends \DbModel
    {
       $sql = 'SELECT EVENT_CATALOG, EVENT_SCHEMA database_name, EVENT_NAME name, DEFINER definer, TIME_ZONE, 
                      EVENT_BODY body_type, EVENT_DEFINITION sql_command, EVENT_TYPE event_type, 
-                     CASE WHEN EVENT_TYPE = \'RECURRING\' THEN TRUE ELSE FALSE END event_type_b, EXECUTE_AT execute_at, 
+                     CASE WHEN EVENT_TYPE = \'RECURRING\' THEN TRUE ELSE FALSE END event_type_b, 
+                     CASE WHEN EVENT_TYPE = \'RECURRING\' THEN TRUE ELSE FALSE END repeated,
+                     EXECUTE_AT run_at,  EXECUTE_AT execute_at, 
                      INTERVAL_VALUE interval_value, INTERVAL_FIELD interval_unit, INTERVAL_FIELD unit,
                      SQL_MODE, STARTS start, ENDS end, STATUS status, ON_COMPLETION on_completion,
                      CASE WHEN ON_COMPLETION = \'PRESERVE\' THEN FALSE ELSE TRUE END on_completion_b,
+                     CASE WHEN ON_COMPLETION = \'PRESERVE\' THEN FALSE ELSE TRUE END preserve,
                      CREATED created, LAST_ALTERED altered, LAST_EXECUTED executed,
                      EVENT_COMMENT comment, ORIGINATOR, CHARACTER_SET_CLIENT, COLLATION_CONNECTION, DATABASE_COLLATION
               FROM INFORMATION_SCHEMA.EVENTS

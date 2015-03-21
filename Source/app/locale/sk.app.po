@@ -1,8 +1,8 @@
 # Gettext keys exported by GettextTranslator and Translation Panel
-# Created: 2015-03-20 14:20:07
+# Created: 2015-03-21 12:27:53
 msgid ""
 msgstr ""
-"PO-Revision-Date: 2015-03-20 14:20+0100\n"
+"PO-Revision-Date: 2015-03-21 12:27+0100\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -54,6 +54,9 @@ msgstr "Hodina:Sekunda"
 msgid "Jednorázová"
 msgstr "Jednorazová"
 
+msgid "Jednotka"
+msgstr "Jednotka"
+
 msgid "Jméno"
 msgstr "Meno"
 
@@ -102,6 +105,9 @@ msgstr "Posledná zmena"
 msgid "Přihlásit"
 msgstr "Prihlásiť"
 
+msgid "RRRR-MM-DD HH:MI:SS"
+msgstr "RRRR-MM-DD HH:MI:SS"
+
 msgid "Rok"
 msgstr "Rok"
 
@@ -109,7 +115,8 @@ msgid "Rok:Měsíc"
 msgstr "Rok:Mesiac"
 
 msgid "SQL příkaz"
-msgstr "SQL príkaz"
+msgstr[0] "SQL príkaz"
+msgstr[1] "v"
 
 msgid "Server"
 msgstr "Server"
@@ -125,6 +132,9 @@ msgstr "Spustiť"
 
 msgid "Spustit každých"
 msgstr "Spustiť každých"
+
+msgid "Spustit v"
+msgstr "Spustiť v"
 
 msgid "Stav"
 msgstr "Stav"
@@ -146,6 +156,12 @@ msgstr "Udalosti"
 
 msgid "Uživatel"
 msgstr "Užívateľ"
+
+msgid "VYPNUTO"
+msgstr "VYPNUTÉ"
+
+msgid "Verze"
+msgstr "Verzia"
 
 msgid "Vlastník"
 msgstr "Vlastník"
@@ -180,6 +196,9 @@ msgstr "Vytvoriť"
 msgid "ZAPNUTO"
 msgstr "ZAPNUTÉ"
 
+msgid "Zapnout"
+msgstr "Zapnúť"
+
 msgid "Zapnutá"
 msgstr "Zapnutá"
 
@@ -201,12 +220,69 @@ msgstr "Späť"
 msgid "Zrušení události"
 msgstr "Zrušenie udalosti"
 
+msgid "Zrušit"
+msgstr "Zrušiť"
+
 msgid "Úprava události"
 msgstr "Úprava udalosti"
 
 msgid "Čtvrtletí"
 msgstr "Štvrťrok"
 
-msgid "Zrušit"
-msgstr "Zrušiť"
+msgid "cdcol"
+msgstr ""
+
+msgid "common_schema"
+msgstr ""
+
+msgid "cportal"
+msgstr ""
+
+msgid "dol"
+msgstr ""
+
+msgid "fakturace"
+msgstr ""
+
+msgid "idluhapi"
+msgstr ""
+
+msgid "information_schema"
+msgstr ""
+
+msgid "kproject"
+msgstr ""
+
+msgid "mysql"
+msgstr ""
+
+msgid "performance_schema"
+msgstr ""
+
+msgid "phpmyadmin"
+msgstr ""
+
+msgid "test"
+msgstr ""
+
+msgid "webauth"
+msgstr ""
+
+msgid "webreminder"
+msgstr ""
+
+msgid "zcms"
+msgstr ""
+
+msgid "zdcube"
+msgstr ""
+
+msgid "zpolish"
+msgstr ""
+
+msgid "zsklad"
+msgstr ""
+
+msgid "BEGIN SELECT 1; SELECT 2; END;"
+msgstr ""
 
