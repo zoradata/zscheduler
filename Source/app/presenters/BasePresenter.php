@@ -13,7 +13,6 @@ abstract class BasePresenter extends \Nette\Application\UI\Presenter
 
 {
 
-   public $session;
    /** @var array Konfigurační parametry aplikace (pole 'parametr'=>'hodnota') */
    public $param;
 
@@ -27,8 +26,6 @@ abstract class BasePresenter extends \Nette\Application\UI\Presenter
    protected function startup()
    {
       parent::startup();
-//      $this->session = $this->context->getService('session');                                                                     // Načtení session
-      
       $this->param = $this->context->getParameters();                                                                             // Načtení parametrů  
       $this->httpResponse = $this->context->getByType('Nette\Http\Response');                                                     // Načtení HTTP odpovědi
       $this->translator->lang = $this->param['language'];      

@@ -11,15 +11,15 @@ common:
   pageDatabase: 12                                                              # Počet záznamu ns stránku ve výpisu databází
   pageEvent: 15                                                                 # Počet záznamu ns stránku ve výpisu událostí
   language: sk                                                                  # Jayzk aplikace (cs, en, sk)
+  loginExpiration: 30 MINUTES                                                   # Čas expirace přihlášení při nečinnosti
 
  php:
   date.timezone: Europe/Prague
   
  nette:
   application:
-   #debugger: TRUE # Pro PROD zakomentovat
-   #catchExceptions: FALSE # Pro PROD zakomentovat
-   errorPresenter: Base:Error
+   catchExceptions: TRUE 
+   errorPresenter: Error
   session:
    autoStart: true
    expiration: 14 days

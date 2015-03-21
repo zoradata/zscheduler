@@ -2,7 +2,7 @@
 /**
  * Z-Scheduler
  *
- * Last revison: 12.3.2015
+ * Last revison: 21.3.2015
  * @copyright	Copyright (c) 2014 ZoraData sdružení <http://www.zoradata.cz> Jaroslav Šourek
  * 
  * Bootstrap soubor
@@ -29,7 +29,7 @@ $params['dirLib'] = realpath(__DIR__ . '/../libs');										  // Knihovna exter
 $configurator = new Nette\Configurator;
 
 // Nastavení ladění
-$configurator->setDebugMode(TRUE);
+$configurator->setDebugMode(FALSE);
 $configurator->enableDebugger($params['dirLog']);
 
 // Nastavení adresáře pro cache

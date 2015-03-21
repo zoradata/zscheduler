@@ -26,8 +26,6 @@ class SignPresenter extends BasePresenter
     */
    public function actionDefault()
    {
-    /*  if (ActualUser::get()->getLogoutReason() === NUser::INACTIVITY)
-         $this->message = 'Uživatel byl odhlášen z důvodů neaktivity.';*/
       $form = new Form($this, 'login');
       $form->setTranslator($this->translator);
       $form->getElementPrototype()->class('form-horizontal');
@@ -49,7 +47,6 @@ class SignPresenter extends BasePresenter
       try
       {
          $this->user->login($data['host'], $data['user'], $data['password']);                                                     // Přihlášení
-         $this->user->setExpiration('30 MINUTES', TRUE);                                                                          // Nastavení doby trvání přihlášení
          $this->redirect(':Home:default');
       }
       catch (\Nette\Security\AuthenticationException $e)
